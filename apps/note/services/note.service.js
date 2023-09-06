@@ -2,7 +2,6 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 // import { storageService } from '../../../services/storage.service.js'
 
-import { notesData } from './notesData.js'
 const demoNotes = [
     {
         id: 'n101',
