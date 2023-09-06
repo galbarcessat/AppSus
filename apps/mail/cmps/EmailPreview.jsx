@@ -1,21 +1,15 @@
 const { Link, useNavigate } = ReactRouterDOM
 export function EmailPreview({ email, onDeleteEmail, toggleView }) {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     function getFormatedDate(timestamp) {
         const date = new Date(timestamp)
         return date.toLocaleDateString()
     }
 
-    function onEmailDetails(emailId) {
-        // <Link to={`/email/${emailId}`}>Details</Link>
-        toggleView(email)
-        console.log('emailId ON EMAIL:', emailId)
-
-    }
-
+    
     return (
-        <div className="email-row" onClick={() => { onEmailDetails(email.id) }}>
+        <div className="email-row" onClick={() => {navigate(`Details/${email.id}`)}}>
             <div className="email-from-content">
                 <div className="email-side-icons-container">
                     <span><i className="fa-regular fa-square"></i></span>

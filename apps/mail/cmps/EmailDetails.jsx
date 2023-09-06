@@ -2,28 +2,27 @@ const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
 import { EmailService } from '../../mail/services/email.service.js'
 
-export function EmailDetails({ toggleView, emailSelected }) {
+export function EmailDetails() {
     const [email, setEmail] = useState(null)
-    const params = useParams()
-    console.log('params:', params)
-    console.log('emailSelected:', emailSelected)
+    const {emailId} = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
-        setEmail(emailSelected)
-    }, [params.emailId])
+        loadEmail()
+    }, [emailId])
 
-    // function loadEmail() {
-    //     EmailService.get(params.emailId)
-    //         .then(setEmail)
-    //         .catch((err) => console.log('err:', err))
-    // }
-    
+    function loadEmail() {
+        EmailService.get(emailId)
+            .then(setEmail)
+            .catch((err) => console.log('err:', err))
+    }
+
     console.log('email:', email)
     if (!email) return <div>Loading...</div>
     return (
         <section className="email-details-container">
             <div>{email.id}</div>
-            <button onClick={toggleView}>Go back</button>
+            <button onClick={()=>navigate('/email')}>Go back</button>
         </section>
     )
 }

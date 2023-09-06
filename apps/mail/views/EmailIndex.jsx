@@ -1,46 +1,16 @@
 
 const { useState, useEffect } = React
 const { Link, Outlet } = ReactRouterDOM
+const { Route, Routes } = ReactRouterDOM
+
 
 import { EmailService } from "../services/email.service.js"
 import { EmailList } from "../cmps/EmailList.jsx"
 import { EmailDetails } from "../cmps/EmailDetails.jsx"
 
 export function EmailIndex() {
-    const [emails, setEmails] = useState(null)
-    const [emailSelected, setSelectedEmail] = useState(false)
-
-    useEffect(() => {
-        EmailService.query().then((emails) => setEmails(emails))
-    }, [])
 
 
-    function toggleView(email) {
-
-        setSelectedEmail((prevState) => {
-            if (!prevState) {
-                return email
-            }else if(prevState){
-                return null
-            }
-        })
-    }
-
-    function onDeleteEmail(emailId) {
-        EmailService.remove(emailId)
-            .then(() => {
-                setEmails((prevEmails) => prevEmails.filter((email) => email.id !== emailId))
-                //   showSuccessMsg(`Book Removed! ${bookId}`)
-            })
-            .catch((err) => {
-                console.log('err:', err)
-                //   showErrorMsg('Problem Removing ' + bookId)
-            })
-    }
-
-
-
-    if (!emails) return <div>Loading...</div>
     return (
         <section className="email-app-container">
             {/*TOP NAV COMPONENET*/}
@@ -80,11 +50,13 @@ export function EmailIndex() {
                 <button>Date</button>
                 <button>Subject</button>
             </section>
+
             {/* EMAIL LIST */}
             <section className="emails-display-container">
-                {!emailSelected && <EmailList emails={emails} onDeleteEmail={onDeleteEmail} toggleView={toggleView} />}
-                {emailSelected && <EmailDetails toggleView={toggleView} emailSelected={emailSelected}/>}
-                {/* <Outlet />  ??? or && for the email details */}
+                <Routes>
+                    <Route path="/" element={<EmailList />} />
+                    <Route path="/Details/:emailId" element={<EmailDetails />} />
+                </Routes>
             </section>
         </section>
     )
