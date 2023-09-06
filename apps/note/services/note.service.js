@@ -2,7 +2,7 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 // import { storageService } from '../../../services/storage.service.js'
 
-import { notesData } from './notesData.js'
+
 const demoNotes = [
     {
         id: 'n101',
@@ -71,7 +71,10 @@ _createNotes()
 
 export const noteService = {
     query,
-    remove
+    remove,
+    save,
+    get,
+    getEmptyNote
 }
 
 function query() {
@@ -88,6 +91,12 @@ function save(note) {
     }
 }
 
+function get(noteId) {
+    return storageService.get(STORAGE_KEY, noteId).then((note) => {
+        return note
+    })
+}
+
 function remove(noteId) {
     return storageService.remove(NOTES_KEY, noteId)
 }
@@ -99,6 +108,21 @@ function remove(noteId) {
 //             return note
 //         })
 // }
+
+function getEmptyNote() {
+    return {
+        id: '',
+        createdAt: 1112222,
+        type: 'NoteTxt',
+        isPinned: false,
+        style: {
+            backgroundColor: '#00d'
+        },
+        info: {
+            txt: 'Fullstack Me Baby!'
+        }
+    }
+}
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY)

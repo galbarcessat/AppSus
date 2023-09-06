@@ -1,5 +1,8 @@
 const { Link, NavLink } = ReactRouterDOM
 const { useState } = React
+
+
+
 export function AppHeader() {
   const [menuState, setMenuState] = useState(false)
 
@@ -16,6 +19,7 @@ export function AppHeader() {
           <h3 className="app-header-title"><i className="fa-solid fa-horse-head"></i>AppSus</h3>
         </Link>
         <span onClick={() => toggleMenu()} className="main-menu-icon"><i className="fa-solid fa-bars"></i></span>
+        {/* <UserMsg /> */}
       </header>
       <div className={dynClass}>
         <nav>

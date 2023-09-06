@@ -1,30 +1,22 @@
 import { NotePreview } from './NotePreview.jsx'
+import { NoteAdd } from './NoteAdd.jsx'
+const { Link } = ReactRouterDOM
 
-export function NoteList({ notes, onRemoveNote }) {
+export function NoteList({ notes, onRemoveNote, onEditNote }) {
 
 
   return (
     <ul className="note-list">
       {notes.map(note => (
         <li className='clean-list' key={note.id}>
-          <NotePreview note={note} />
-          <div><button onClick={() => onRemoveNote(note.id)}>X</button></div>
+          <NotePreview note={note} onEditNote={onEditNote} />
+          <div>
+            <button onClick={() => onRemoveNote(note.id)}>X</button>
+            <button onClick={() => onEditNote(note.id)}>Edit</button>
+          </div>
         </li>
       ))}
+
     </ul>
-
-
-
-
-
-
-
-
-
-    // <section className="notes-container">
-    //   {notes.map((note) => (
-    //     <NotePreview note={note} />
-    //   ))}
-    // </section>
   )
 }
