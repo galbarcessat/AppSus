@@ -6,15 +6,13 @@ header {
 .app-header {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .app-header-title {
   font-size: 2.5rem;
   margin-inline-start: 1em;
   color: rgb(49, 49, 49);
-
-
 }
 .fa-horse-head{
   color: rgb(0, 157, 255);

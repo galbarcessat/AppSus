@@ -20,21 +20,25 @@ export function EmailIndex() {
                     <img className="img-gmail-logo" src="../assets/img/gmailLogo.png" alt="" />
                     <span className="gmail-txt">Gmail</span>
                 </div>
-                <input className="search-input" type="text" placeholder="Search mail" />
+                <div className="input-container">
+                    <input className="search-input" type="text" placeholder="Search mail" />
+                    <i className="fas fa-search search-icon"></i>
+                </div>
 
                 <img className="user-img" src="../assets/img/userImg.png" alt="" />
             </section>
             {/* SIDE NAV BAR COMPOMNENET */}
             <section className="side-navbar">
                 <div>
-                    <button className="btn-compose"><i class="fa-solid fa-pen"></i>Compose</button>
+                    <button className="btn-compose"><i className="fa-solid fa-pen"></i>Compose</button>
                     <div className="side-bar-icons">
-                        <div className="sidebar-icon"><span class="material-symbols-outlined icon">inbox</span><span>Inbox</span></div>
-                        <div className="sidebar-icon"><span class="material-symbols-outlined icon">star</span><span>Starred</span></div>
-                        <div className="sidebar-icon"><span class="material-symbols-outlined icon">send</span><span>Sent</span></div>
-                        <div className="sidebar-icon"><span class="material-symbols-outlined icon">delete</span><span>Deleted</span></div>
+                        <div className="sidebar-icon"><span className="material-symbols-outlined icon">inbox</span><span>Inbox</span></div>
+                        <div className="sidebar-icon"><span className="material-symbols-outlined icon">star</span><span>Starred</span></div>
+                        <div className="sidebar-icon"><span className="material-symbols-outlined icon">send</span><span>Sent</span></div>
+                        <div className="sidebar-icon"><span className="material-symbols-outlined icon">delete</span><span>Deleted</span></div>
                     </div>
                 </div>
+                {/* EMAIL LIST */}
             </section>
             <EmailList emails={emails} />
         </section>

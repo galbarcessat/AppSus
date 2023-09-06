@@ -36,18 +36,38 @@ function _createEmails() {
             subject: 'Miss you!',
             body: 'Would love to catch up sometimes',
             isRead: false,
-            sentAt: 1551133930594,
+            sentAt: 1521133930594,
             removedAt: null,
-            from: 'momo@momo.com',
+            from: 'galbarcessat@gmail.com',
             to: 'user@appsus.com'
         }, {
             id: 'e103',
             subject: 'Miss you!',
             body: 'Would love to catch up sometimes',
             isRead: false,
-            sentAt: 1551133930594,
+            sentAt: 1351133932594,
             removedAt: null,
-            from: 'momo@momo.com',
+            from: 'omerVered@gmail.com',
+            to: 'user@appsus.com'
+        },
+        {
+            id: 'e104',
+            subject: 'Miss you!',
+            body: 'Would love to catch up sometimes',
+            isRead: false,
+            sentAt: 1531133933594,
+            removedAt: null,
+            from: 'test@gal.com',
+            to: 'user@appsus.com'
+        },
+        {
+            id: 'e105',
+            subject: 'Coding Academy July 2023!',
+            body: 'Coding is life',
+            isRead: false,
+            sentAt: 1251122930594,
+            removedAt: null,
+            from: 'dog@test.com',
             to: 'user@appsus.com'
         },]
 

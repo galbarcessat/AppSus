@@ -1,6 +1,6 @@
 import { noteService } from "../services/note.service.js"
 import { NoteList } from "../cmps/NoteList.jsx"
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
 const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
