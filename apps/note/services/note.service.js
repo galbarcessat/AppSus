@@ -17,36 +17,61 @@ const demoNotes = [
         }
     },
     {
-        id: 'n102',
-        type: 'NoteImg',
-        isPinned: false,
-        info: {
-            url: 'http://some-img/me',
-            title: 'Bobi and Me'
-        },
+        id: 'n105',
+        createdAt: 1342222,
+        type: 'NoteTxt',
+        isPinned: true,
         style: {
             backgroundColor: '#00d'
+        },
+        info: {
+            txt: 'Fullstack Me Baby!'
         }
     },
     {
-        id: 'n103',
-        type: 'NoteTodos',
-        isPinned: false,
+        id: 'n104',
+        createdAt: 1112244,
+        type: 'NoteTxt',
+        isPinned: true,
+        style: {
+            backgroundColor: '#00d'
+        },
         info: {
-            title: 'Get my stuff together',
-            todos: [
-                { txt: 'Driving license', doneAt: null },
-                { txt: 'Coding power', doneAt: 187111111 }
-            ]
+            txt: 'Fullstack Me Baby!'
         }
-    }
+    },
+    // {
+    //     id: 'n102',
+    //     type: 'NoteImg',
+    //     isPinned: false,
+    //     info: {
+    //         url: 'http://some-img/me',
+    //         title: 'Bobi and Me'
+    //     },
+    //     style: {
+    //         backgroundColor: '#00d'
+    //     }
+    // },
+    // {
+    //     id: 'n103',
+    //     type: 'NoteTodos',
+    //     isPinned: false,
+    //     info: {
+    //         title: 'Get my stuff together',
+    //         todos: [
+    //             { txt: 'Driving license', doneAt: null },
+    //             { txt: 'Coding power', doneAt: 187111111 }
+    //         ]
+    //     }
+    // }
 ]
 
 const NOTES_KEY = 'notesDB'
 _createNotes()
 
 export const noteService = {
-    query
+    query,
+    remove
 }
 
 function query() {
@@ -63,6 +88,9 @@ function save(note) {
     }
 }
 
+function remove(noteId) {
+    return storageService.remove(NOTES_KEY, noteId)
+}
 
 // function get(noteId) {
 //     return storageService.get(NOTES_KEY, noteId)
