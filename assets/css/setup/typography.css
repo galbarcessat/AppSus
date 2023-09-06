@@ -1,0 +1,16 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'); */
+@font-face {
+    font-family: productSansBold;
+    src: url("../../fonts/Product-Sans-Bold.ttf");
+}
+
+@font-face {
+    font-family: productSans;
+    src: url("../../fonts/Product-Sans-Regular.ttf");
+}
+
+@font-face {
+    font-family: openSans;
+    src: url("../../fonts/OpenSans-Regular.ttf");
+}
