@@ -1,3 +1,11 @@
-export function NoteList() {
-    return <div>note list</div>
+export function NoteList({ notes, onRemoveNote }) {
+ 
+
+  return(
+    <ul>
+      
+        <li>hi</li>
+        
+    </ul>
+  )
 }
