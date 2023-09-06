@@ -55,9 +55,20 @@ export function EmailIndex() {
                         <div className="sidebar-icon"><span className="material-symbols-outlined icon">delete</span><span>Deleted</span></div>
                     </div>
                 </div>
-                {/* EMAIL LIST */}
+
             </section>
-            <EmailList emails={emails} onDeleteEmail={onDeleteEmail} />
+            {/* SORT EMAILS COMPONENET */}
+            <section className="sort-emails-container">
+                <button>Read</button>
+                <button>Starred</button>
+                <button>Date</button>
+                <button>Subject</button>
+            </section>
+            {/* EMAIL LIST */}
+            <section className="emails-display-container">
+                <EmailList emails={emails} onDeleteEmail={onDeleteEmail} />
+                {/* <Outlet />  ??? or && for the email details */}
+            </section>
         </section>
     )
 }

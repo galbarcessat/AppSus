@@ -1,5 +1,4 @@
 import { NotePreview } from './NotePreview.jsx'
-import { NoteAdd } from './NoteAdd.jsx'
 const { Link } = ReactRouterDOM
 
 export function NoteList({ notes, onRemoveNote, onEditNote }) {

@@ -10,12 +10,18 @@ header {
 }
 
 .app-header-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
   font-size: 2.5rem;
-  margin-inline-start: 1em;
+  margin-inline-start: 0.3em;
   color: rgb(49, 49, 49);
 }
-.fa-horse-head{
-  color: rgb(0, 157, 255);
+
+.horse-img {
+  width: 60px;
+  height: 60px;
 }
 
 .main-menu-icon {

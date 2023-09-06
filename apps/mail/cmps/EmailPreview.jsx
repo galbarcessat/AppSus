@@ -7,9 +7,11 @@ export function EmailPreview({ email, onDeleteEmail }) {
     }
 
     function onEmailDetails(emailId) {
+        
         console.log('emailId:', emailId)
 
     }
+
 
     return (
         <div className="email-row" onClick={() => onEmailDetails(email.id)}>
@@ -21,7 +23,8 @@ export function EmailPreview({ email, onDeleteEmail }) {
                 <h3 className="email-from-txt">{email.from}</h3>
             </div>
             <div className="email-body">
-                <h4>{email.subject}
+                <h4>
+                    {email.subject} - 
                     <span>{email.body}</span>
                 </h4>
             </div>
