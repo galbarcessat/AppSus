@@ -4,13 +4,9 @@ export function AppHeader() {
   const [menuState, setMenuState] = useState(false)
 
   let dynClass = menuState ? "icons-nav-container" : "icons-nav-container hide"
-  console.log('dynClass:', dynClass)
 
   function toggleMenu() {
     setMenuState(prevState => !prevState)
-    console.log('menuState:', menuState)
-    // let dynClass = prevState ? "icons-nav-container" : "icons-nav-container hide"
-    // return dynClass
   }
 
   return (
