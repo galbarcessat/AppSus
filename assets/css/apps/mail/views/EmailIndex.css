@@ -126,7 +126,7 @@
      padding: 1.2em 2.2em;
      border-radius: 1.5em;
      border: 0px;
-     margin: 1.5em 0;
+     margin-bottom: 1.5em;
      cursor: pointer;
  }
 
@@ -177,7 +177,7 @@
  .email-icons-container {
      display: none;
      align-items: center;
-     gap: 1em;
+     gap: 0.5em;
      position: absolute;
      right: 0;
      padding-right: 0.5em;

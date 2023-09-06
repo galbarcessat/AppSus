@@ -10,6 +10,23 @@ export function EmailIndex() {
         EmailService.query().then((emails) => setEmails(emails))
     }, [])
 
+
+
+
+    function onDeleteEmail(emailId) {
+        EmailService.remove(emailId)
+            .then(() => {
+                setEmails((prevEmails) => prevEmails.filter((email) => email.id !== emailId))
+                //   showSuccessMsg(`Book Removed! ${bookId}`)
+            })
+            .catch((err) => {
+                console.log('err:', err)
+                //   showErrorMsg('Problem Removing ' + bookId)
+            })
+    }
+
+
+
     if (!emails) return <div>Loading...</div>
     return (
         <section className="email-app-container">
@@ -40,7 +57,7 @@ export function EmailIndex() {
                 </div>
                 {/* EMAIL LIST */}
             </section>
-            <EmailList emails={emails} />
+            <EmailList emails={emails} onDeleteEmail={onDeleteEmail} />
         </section>
     )
 }

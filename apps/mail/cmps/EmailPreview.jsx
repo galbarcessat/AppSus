@@ -1,5 +1,5 @@
 
-export function EmailPreview({ email }) {
+export function EmailPreview({ email, onDeleteEmail }) {
 
     function getFormatedDate(timestamp) {
         const date = new Date(timestamp)
@@ -8,11 +8,7 @@ export function EmailPreview({ email }) {
 
     function onEmailDetails(emailId) {
         console.log('emailId:', emailId)
-    }
 
-    function test(ev) {
-        ev.stopPropagation()
-        console.log('test:')
     }
 
     return (
@@ -35,9 +31,21 @@ export function EmailPreview({ email }) {
             </div>
             <div className="email-icons-container">
                 <i title="Save as note" className="fa-regular fa-paper-plane email-row-icon"></i>
-                <i title="Mark as unread" className="fa-regular fa-envelope email-row-icon"></i>
-                <i onClick={() => test(event)} title="Delete email" className="fa-regular fa-trash-can email-row-icon"></i>
+                <i title="Mark as read" className="fa-regular fa-envelope email-row-icon"></i>
+                {/* <i class="fa-regular fa-envelope-open"></i> OPEN ENVELOPE */}
+                <i onClick={(e) => {
+                    e.stopPropagation()
+                    onDeleteEmail(email.id)
+                }} title="Delete email" className="fa-regular fa-trash-can email-row-icon"></i>
             </div>
         </div>
     )
+}
+
+
+{
+    (e) => {
+        e.stopPropagation(); // Prevent the click event from propagating
+        test(e); // Call the test function
+    }
 }
