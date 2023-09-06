@@ -1,5 +1,5 @@
 header {
-  background: rgb(195, 195, 195);
+  background: rgb(184, 184, 184);
   border-bottom: 2px solid white;
 }
 
@@ -16,6 +16,9 @@ header {
 
 
 }
+.fa-horse-head{
+  color: rgb(0, 157, 255);
+}
 
 .main-menu-icon {
   font-size: 2rem;
@@ -23,11 +26,13 @@ header {
   padding: 5px;
   margin-inline-end: 1em;
   color: rgb(49, 49, 49);
+  padding: 10px;
 
 }
 
 .main-menu-icon:hover {
-  background-color: rgb(222, 222, 222);
+  background-color: rgb(206, 206, 206);
+  border-radius: 50%;
 
 }
 

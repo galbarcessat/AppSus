@@ -20,10 +20,10 @@ export function AppHeader() {
       <div className={dynClass}>
         <nav>
           <ul className="main-nav-list">
-            <li><NavLink to="/"> <div className="nav-item"><img className="main-nav-img" src="../assets/img/homeLogo.png" alt="" />Home</div></NavLink></li>
-            <li><NavLink to="/mail"><div className="nav-item"><img className="main-nav-img" src="../assets/img/gmailLogo.png" alt="" />Gmail</div></NavLink></li>
-            <li><NavLink to="/note"> <div className="nav-item"><img className="main-nav-img" src="../assets/img/keepsLogo.png" alt="" />Note</div></NavLink></li>
-            <li><NavLink to="/book"> <div className="nav-item"><img className="main-nav-img" src="../assets/img/booksLogo.png" alt="" />Books</div></NavLink></li>
+            <li onClick={() => toggleMenu()}><NavLink to="/"> <div className="nav-item"><img className="main-nav-img" src="../assets/img/homeLogo.png" alt="" />Home</div></NavLink></li>
+            <li onClick={() => toggleMenu()}><NavLink to="/mail"><div className="nav-item"><img className="main-nav-img" src="../assets/img/gmailLogo.png" alt="" />Gmail</div></NavLink></li>
+            <li onClick={() => toggleMenu()}><NavLink to="/note"> <div className="nav-item"><img className="main-nav-img" src="../assets/img/keepsLogo.png" alt="" />Note</div></NavLink></li>
+            <li onClick={() => toggleMenu()}><NavLink to="/book"> <div className="nav-item"><img className="main-nav-img" src="../assets/img/booksLogo.png" alt="" />Books</div></NavLink></li>
           </ul>
         </nav>
       </div>
