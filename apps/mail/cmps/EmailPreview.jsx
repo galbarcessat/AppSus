@@ -1,5 +1,6 @@
-
-export function EmailPreview({ email, onDeleteEmail }) {
+const { Link, useNavigate } = ReactRouterDOM
+export function EmailPreview({ email, onDeleteEmail, toggleView }) {
+    const navigate = useNavigate();
 
     function getFormatedDate(timestamp) {
         const date = new Date(timestamp)
@@ -7,14 +8,14 @@ export function EmailPreview({ email, onDeleteEmail }) {
     }
 
     function onEmailDetails(emailId) {
-        
-        console.log('emailId:', emailId)
+        // <Link to={`/email/${emailId}`}>Details</Link>
+        toggleView(email)
+        console.log('emailId ON EMAIL:', emailId)
 
     }
 
-
     return (
-        <div className="email-row" onClick={() => onEmailDetails(email.id)}>
+        <div className="email-row" onClick={() => { onEmailDetails(email.id) }}>
             <div className="email-from-content">
                 <div className="email-side-icons-container">
                     <span><i className="fa-regular fa-square"></i></span>
@@ -24,7 +25,7 @@ export function EmailPreview({ email, onDeleteEmail }) {
             </div>
             <div className="email-body">
                 <h4>
-                    {email.subject} - 
+                    {email.subject} -
                     <span>{email.body}</span>
                 </h4>
             </div>
@@ -41,14 +42,8 @@ export function EmailPreview({ email, onDeleteEmail }) {
                     onDeleteEmail(email.id)
                 }} title="Delete email" className="fa-regular fa-trash-can email-row-icon"></i>
             </div>
+
         </div>
     )
 }
 
-
-{
-    (e) => {
-        e.stopPropagation(); // Prevent the click event from propagating
-        test(e); // Call the test function
-    }
-}
