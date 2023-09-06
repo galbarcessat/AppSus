@@ -6,8 +6,13 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+<<<<<<< HEAD
     loadFromStorage,
     saveToStorage
+=======
+    saveToStorage,
+    loadFromStorage
+>>>>>>> 8ca6b441b36204e124255c6b08c485d90b011faf
 }
 
 function makeId(length = 6) {
@@ -70,4 +75,8 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8ca6b441b36204e124255c6b08c485d90b011faf
