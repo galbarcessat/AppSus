@@ -23,15 +23,28 @@ export function NoteEdit({ onAddNote, noteId = null }) {
     }
 
     return (
-        <div className="form-container">
-            <div onClick={handleToggle} >
+        <div className="add-note-container">
+            <div className="text-input-container">
                 <input className="note-text" type="text" placeholder="What's on your mind..." value={inputVal} onChange={(ev) => onInputText(ev)} />
-                <button onClick={() => onAddNote(inputVal)}>Add</button>
-                {isExpanded && <div>
-                    <p>Hi there</p>
-                </div>}
+                <button className="material-symbols-outlined logo" onClick={() => onAddNote(inputVal)}><span>
+                    add
+                </span></button>
+                <button className="material-symbols-outlined logo">
+                    <span>
+                        add_photo_alternate
+                    </span>
+                </button>
             </div>
         </div>
     )
 
 }
+
+
+// {/* <div onClick={handleToggle} > */ }
+//                 <input className="note-text" type="text" placeholder="What's on your mind..." value={inputVal} onChange={(ev) => onInputText(ev)} />
+//                 <button onClick={() => onAddNote(inputVal)}>Add</button>
+// {/* {isExpanded && <div>
+//                     <p>Hi there</p>
+//                 </div>} */}
+// {/* </div> */ }

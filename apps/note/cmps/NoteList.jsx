@@ -21,29 +21,41 @@ export function NoteList({ notes: initialNotes, onBlurNote, onChangeBGC, onRemov
   //   setNotes(updatedNotes);
   // }
 
+  const renderNodeList = () => {
+    return initialNotes.map(note => (
+      <div style={{ backgroundColor: note.style.backgroundColor }} className='note clean-list' key={note.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+        <NotePreview note={note} onBlurNote={onBlurNote} onEditNote={onEditNote} />
+
+        <div className='note-footer'>
+          <button className="logo" onClick={() => onRemoveNote(note.id)}>
+            <span class="material-symbols-outlined">
+              delete
+            </span>
+          </button>
+
+          <button className="logo" onClick={() => onEditNote(note.id)}>Edit</button>
+
+          <button className="logo">
+            <span className="material-symbols-outlined ">
+              push_pin
+            </span>
+          </button>
+
+          <button className="logo" onClick={() => onChangeBGC(note.id, '#195da6')}>
+            <span className="material-symbols-outlined">
+              palette
+            </span>
+          </button>
+        </div>
+      </div>
+
+    ))
+  }
+
 
   return (
-    <ul className="note-list">
-      {initialNotes.map(note => (
-        <li style={{
-          backgroundColor: note.style.backgroundColor,
-        }} className='clean-list' key={note.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
-          <NotePreview note={note} onBlurNote={onBlurNote} onEditNote={onEditNote} />
-          <div>
-            <button onClick={() => onRemoveNote(note.id)}>X</button>
-            <button onClick={() => onEditNote(note.id)}>Edit</button>
-            <button><span className="material-symbols-outlined">
-              push_pin
-            </span></button>
-            <button onClick={() => onChangeBGC(note.id, '#195da6')}>
-              <span className="material-symbols-outlined">
-                palette
-              </span>
-            </button>
-          </div>
-        </li>
-      ))}
-
-    </ul>
+    <div className="note-list">
+      {renderNodeList()}
+    </div>
   )
 }
