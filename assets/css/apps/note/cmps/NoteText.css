@@ -9,7 +9,7 @@
   padding-left: 10px;
 }
 
-.form-container {
+.add-note-container {
   background: #fff;
   max-width: 598px;
   margin: 32px auto;
@@ -18,10 +18,11 @@
   border-radius: 8px;
 }
 
-.form-container section {
+.text-input-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   color: #5f6368;
+  margin-inline-end: 5px;
 }

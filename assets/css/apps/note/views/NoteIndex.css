@@ -1,17 +1,4 @@
- /* note index */
+/* note index */
 * {
-    box-sizing: border-box;
-}
-
- .search input {
-  flex: 1;
-  border: none;
-  font-size: 1.5rem;
-  font-family: var(--font-raleway);
-  font-weight: 500;
-  padding-right: 1rem;
-
-  outline: none;
-  color: #a1a1a1;
-  background: rgb(241, 243, 244);
+  box-sizing: border-box;
 }

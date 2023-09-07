@@ -10,10 +10,20 @@
   font-size: 1.1rem;
 }
 
-.logo-area {
+.logo {
   display: flex;
   align-items: center;
+  font-size: 1.1rem;
+  color: black;
+  opacity: 0.8;
+  padding: 2px;
+  border-radius: 5px;
+  margin-inline-start: 3px;
 }
-.logo-text {
-  font-size: 1.2rem;
+
+.logo:hover {
+  background: #f1f3f4;
+  color: black;
+  /* border-radius: 50%; */
+  cursor: pointer;
 }

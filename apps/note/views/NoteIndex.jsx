@@ -86,6 +86,7 @@ export function NoteIndex() {
 
 
   function onAddNote(txt) {
+    if (!txt) return
     console.log('txt:', txt)
     const note = noteService.getEmptyNote()
     // console.log('noteToAdd:', noteToAdd)
@@ -106,6 +107,7 @@ export function NoteIndex() {
       <section className="note-add">
         <NoteEdit onAddNote={onAddNote} />
       </section>
+
       <NoteList notes={notes} onBlurNote={onBlurNote} onChangeBGC={onChangeBGC} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
     </div>
   );
