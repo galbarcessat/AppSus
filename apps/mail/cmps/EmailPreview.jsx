@@ -1,7 +1,7 @@
 const { useState, useEffect } = React
 const { Link, useNavigate } = ReactRouterDOM
 
-export function EmailPreview({ email, onDeleteEmail }) {
+export function EmailPreview({ email, onDeleteEmail, onStarEmail, onToggleElement }) {
     const navigate = useNavigate()
 
 
@@ -11,6 +11,14 @@ export function EmailPreview({ email, onDeleteEmail }) {
     }
 
     let dynClassIsRead = email.isRead ? 'read' : 'unread'
+    let dynClassIsStarred = email.isStarred ? 'starred' : 'unstarred'
+    let dynEnvelpoeElement = email.isRead ?
+        <i title="Mark as unread" className="fa-regular fa-envelope email-row-icon"></i> :
+        <i title="Mark as read " className="fa-regular fa-envelope-open email-row-icon"></i>
+
+
+    // let dynElement
+    // console.log('dynClassIsStarred:', dynClassIsStarred)
     // console.log('dynClassIsRead:', dynClassIsRead)
 
     return (
@@ -18,25 +26,32 @@ export function EmailPreview({ email, onDeleteEmail }) {
             <div className="email-from-content">
                 <div className="email-side-icons-container">
                     <span><i className="fa-regular fa-square"></i></span>
-                    <span><i className="fa-solid fa-star"></i></span>
+                    {/* <i class="fa-regular fa-square-check"></i> */}
+                    <span onClick={(e) => {
+                        e.stopPropagation()
+                        onToggleElement(email, 'star')
+                    }}><i className={"fa-solid fa-star " + dynClassIsStarred}></i></span>
                 </div>
-                <h3 className="email-from-txt">{email.from}</h3>
+                <span className={"email-from-txt " + dynClassIsRead}>{email.from}</span>
             </div>
             <div className="email-body">
-                <h4>
-                    {email.subject } - 
-                </h4>
-                <span>{email.body}</span>
+                <span className={dynClassIsRead}>
+                    {email.subject} 
+                </span>
+                <span className="makaf">-</span>
+                <span className="email-body-txt">{email.body}</span>
             </div>
 
-            <div>
+            <span className={dynClassIsRead}>
                 {getFormatedDate(email.sentAt)}
-            </div>
+            </span>
             {/* CHANGE TO OPEN ENVELPOE WHEN ISREAD AND CLOSED ENVELOPE WHEN ISREAD FALSE! */}
             <div className={"email-icons-container " + dynClassIsRead}>
                 <i title="Save as note" className="fa-regular fa-paper-plane email-row-icon"></i>
-                <i title="Mark as read" className="fa-regular fa-envelope email-row-icon"></i>
-                {/* <i class="fa-regular fa-envelope-open"></i> OPEN ENVELOPE */}
+                <span onClick={(e) => {
+                    e.stopPropagation()
+                    onToggleElement(email, 'envelope')
+                }}>{dynEnvelpoeElement}</span>
                 <i onClick={(e) => {
                     e.stopPropagation()
                     onDeleteEmail(email.id)

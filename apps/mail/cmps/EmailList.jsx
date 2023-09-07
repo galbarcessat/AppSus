@@ -6,7 +6,7 @@ import { EmailService } from "../services/email.service.js"
 import { EmailDetails } from "../cmps/EmailDetails.jsx"
 
 
-export function EmailList({ emails, onDeleteEmail }) {
+export function EmailList({ emails, onDeleteEmail,onToggleElement }) {
   
   // console.log('emails:', emails)
 
@@ -14,7 +14,7 @@ export function EmailList({ emails, onDeleteEmail }) {
   return (
     <section className="email-list-container">
       {emails.map((email) => (
-        <EmailPreview key={email.id} email={email} onDeleteEmail={onDeleteEmail} />
+        <EmailPreview key={email.id} email={email} onDeleteEmail={onDeleteEmail} onToggleElement={onToggleElement} />
       ))}
     </section>
   )

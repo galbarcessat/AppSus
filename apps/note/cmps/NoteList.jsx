@@ -28,7 +28,7 @@ export function NoteList({ notes: initialNotes, onBlurNote, onChangeBGC, onRemov
 
         <div className='note-footer'>
           <button className="logo" onClick={() => onRemoveNote(note.id)}>
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
               delete
             </span>
           </button>

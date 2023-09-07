@@ -1,5 +1,8 @@
 html{
     font-family: productSans, sans-serif;
+    height: 100%;
+    scroll-behavior: smooth;
+
 }
 
 body {

@@ -28,6 +28,7 @@ function _createEmails() {
             subject: 'Miss you!',
             body: 'Would love to catch up sometimes',
             isRead: false,
+            isStarred: false,
             sentAt: 1551133930594,
             removedAt: null,
             from: 'momo@momo.com',
@@ -37,6 +38,7 @@ function _createEmails() {
             subject: 'Miss you!',
             body: 'Would love to catch up sometimes',
             isRead: false,
+            isStarred: false,
             sentAt: 1521133930594,
             removedAt: null,
             from: 'galbarcessat@gmail.com',
@@ -46,6 +48,7 @@ function _createEmails() {
             subject: 'Miss you!',
             body: 'Would love to catch up sometimes',
             isRead: false,
+            isStarred: false,
             sentAt: 1351133932594,
             removedAt: null,
             from: 'omerVered@gmail.com',
@@ -56,6 +59,7 @@ function _createEmails() {
             subject: 'Miss you!',
             body: 'Would love to catch up sometimes',
             isRead: false,
+            isStarred: false,
             sentAt: 1531133933594,
             removedAt: null,
             from: 'test@gal.com',
@@ -66,6 +70,7 @@ function _createEmails() {
             subject: 'Coding Academy July 2023!',
             body: 'Coding is life',
             isRead: false,
+            isStarred: false,
             sentAt: 1251122930594,
             removedAt: null,
             from: 'dog@test.com',
@@ -76,6 +81,7 @@ function _createEmails() {
             subject: 'Testing AppSus',
             body: 'AppSuS web is the best app on earth bla bla bla ',
             isRead: false,
+            isStarred: false,
             sentAt: 1651122933594,
             removedAt: null,
             from: 'user@appsus.com',
@@ -86,6 +92,7 @@ function _createEmails() {
             subject: 'Hey hey',
             body: 'Hey hey hey hey hey hey hey hey hey hey hey hey hey ',
             isRead: false,
+            isStarred: false,
             sentAt: 1622323930594,
             removedAt: null,
             from: 'user@appsus.com',
@@ -97,12 +104,11 @@ function _createEmails() {
     // console.log('emails:', emails)
 }
 // FilterBy = { Deleted: false, Starred: false, Sent: false }
-function query(filterBy) {
+function query(filterBy, sortBy) {
     return storageService.query(STORAGE_KEY).then((emails) => {
         console.log('filterBy:', filterBy)
+        console.log('sortBy:', sortBy)
         console.log('emails:', emails)
-        // INBOX STATE
-        // emails = emails.filter(email => (email.removedAt === null && email.from !== loggedinUser.email))
 
         if (filterBy) {
 
@@ -121,18 +127,49 @@ function query(filterBy) {
             }
             else if (filterBy.Starred) {
                 console.log('FILTERING BY STARRED')
-                emails = emails.filter((email) => email.Starred && !email.removedAt)
+                emails = emails.filter((email) => email.isStarred && !email.removedAt)
                 // emails = emails.filter((email) => email.Starred === true)
             } else if (filterBy.Inbox) {
                 console.log('FILTERING BY INBOX')
                 emails = emails.filter(email => (email.from !== loggedinUser.email && !email.removedAt))
             }
         }
+        if (sortBy) {
+            if (sortBy === 'subject') {
+                console.log('SORTING BY SUBJECT:')
+                emails = emails.sort((email1, email2) => {
+                    if (email1.subject < email2.subject) return -1;
+                    else if (email1.subject > email2.subject) return 1;
+                    return 0;
+                })
+            } else if (sortBy === 'date') {
+                emails = emails.sort((email1, email2) => email2.sentAt - email1.sentAt)
+            } else if (sortBy === 'isRead') {
+                emails = emails.sort((email1, email2) => {
+                    if (email1.isRead && !email2.isRead) {
+                        return -1
+                    } else if (!email1.isRead && email2.isRead) {
+                        return 1
+                    }
+                })
+            } else if (sortBy === 'isStarred') {
+                emails = emails.sort((email1, email2) => {
+                    if (email1.isStarred && !email2.isStarred) {
+                        return -1
+                    } else if (!email1.isStarred && email2.isStarred) {
+                        return 1
+                    }
+                })
+            }
+
+        }
         console.log('emails', emails)
 
         return emails
     })
 }
+
+
 
 function get(emailId) {
     return storageService.get(STORAGE_KEY, emailId)
