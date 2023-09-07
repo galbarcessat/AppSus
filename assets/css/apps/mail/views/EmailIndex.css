@@ -76,6 +76,10 @@
      width: 31em;
      font-family: openSans, sans-serif;
  }
+ .search-input:focus{
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+
+ }
 
  .search-icon {
      position: absolute;
@@ -139,10 +143,13 @@
      border: 0px;
      margin-bottom: 1em;
      cursor: pointer;
+     transition: 0.6 all ;
  }
 
  .btn-compose:hover {
      box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+     transition: 0.6 all ;
+
 
  }
 
@@ -154,6 +161,7 @@
      grid-row: 2/3;
      grid-column: 2/3;
      padding-left: 10px;
+     margin: 10px 0;
  }
 
  .sort-emails-container button {
@@ -170,7 +178,6 @@
  /* CHANGE TO DISPLAY GRID SO EVERYTHING WILL BE ALIGNED CORRECELY */
  .email-row {
      display: flex;
-     /* justify-content: space-between; */
      gap: 10px;
      align-items: center;
      padding: 10px 0;
@@ -178,36 +185,37 @@
      border-bottom: 1px solid #BABEC1;
      cursor: pointer;
      position: relative;
+ }
 
-     .body {
-         display: flex;
-         align-items: center;
-         justify-content: start;
-         flex-grow: 1;
-    
-     }
+ .email-row:hover {
+     /* box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); */
+     box-shadow: 0 -2px 3px 0px rgba(0, 0, 0, 0.2)
  }
 
  .read {
      background-color: #F2F6FC;
+     /* font-weight: lighter; */
  }
 
  .unread {
      background-color: white;
- }
-
- .email-row:hover {
-     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+     /* font-weight: bold; */
  }
 
 
  .email-from-content {
      display: flex;
      align-items: center;
-
-     width: 250px;
+     width: 300px;
  }
 
+ .email-body {
+     display: flex;
+     align-items: center;
+     justify-content: start;
+     flex-grow: 1;
+
+ }
 
  .fa-square,
  .fa-star {
@@ -227,7 +235,7 @@
      right: 0;
      padding-right: 0.3em;
      font-size: 1.3em;
-     /* background-color: white; */
+
  }
 
  .email-row:hover .email-icons-container {
@@ -237,6 +245,7 @@
 
  .email-row-icon {
      padding: 7px;
+
  }
 
  .email-row-icon:hover {

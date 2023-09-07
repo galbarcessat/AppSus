@@ -22,9 +22,9 @@ export function EmailPreview({ email, onDeleteEmail }) {
                 </div>
                 <h3 className="email-from-txt">{email.from}</h3>
             </div>
-            <div className="body">
+            <div className="email-body">
                 <h4>
-                    {email.subject} -
+                    {email.subject } - 
                 </h4>
                 <span>{email.body}</span>
             </div>
@@ -42,7 +42,6 @@ export function EmailPreview({ email, onDeleteEmail }) {
                     onDeleteEmail(email.id)
                 }} title="Delete email" className="fa-regular fa-trash-can email-row-icon"></i>
             </div>
-
         </div>
     )
 }

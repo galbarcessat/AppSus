@@ -8,8 +8,8 @@ import { EmailDetails } from "../cmps/EmailDetails.jsx"
 
 export function EmailList({ emails, onDeleteEmail }) {
   
-  console.log('emails:', emails)
-  
+  // console.log('emails:', emails)
+
   if (!emails) return <div>Loading...</div>
   return (
     <section className="email-list-container">

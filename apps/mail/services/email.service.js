@@ -70,37 +70,66 @@ function _createEmails() {
             removedAt: null,
             from: 'dog@test.com',
             to: 'user@appsus.com'
+        },
+        {
+            id: 'e106',
+            subject: 'Testing AppSus',
+            body: 'AppSuS web is the best app on earth bla bla bla ',
+            isRead: false,
+            sentAt: 1651122933594,
+            removedAt: null,
+            from: 'user@appsus.com',
+            to: 'Coding@hey.com'
+        },
+        {
+            id: 'e107',
+            subject: 'Hey hey',
+            body: 'Hey hey hey hey hey hey hey hey hey hey hey hey hey ',
+            isRead: false,
+            sentAt: 1622323930594,
+            removedAt: null,
+            from: 'user@appsus.com',
+            to: 'eyalB@hello.com'
         },]
 
         utilService.saveToStorage(STORAGE_KEY, emails)
     }
-    console.log('emails:', emails)
+    // console.log('emails:', emails)
 }
 // FilterBy = { Deleted: false, Starred: false, Sent: false }
 function query(filterBy) {
     return storageService.query(STORAGE_KEY).then((emails) => {
-        //NORMAL STATE FILTERS ALL THE EMAILS THAT revmovedAt === null if they have removed at they belong to filterby.deleted
+        console.log('filterBy:', filterBy)
+        console.log('emails:', emails)
+        // INBOX STATE
+        // emails = emails.filter(email => (email.removedAt === null && email.from !== loggedinUser.email))
+
         if (filterBy) {
 
-            // if (filterBy.txt) {
-            //     const regex = new RegExp(filterBy.txt, 'i')
-            //     emails = emails.filter((book) => regex.test(book.title))
-            //     console.log('books', emails)
-            // }
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                emails = emails.filter((email) => (regex.test(email.subject) && !email.removedAt))
+                console.log('books', emails)
+            }
             if (filterBy.Deleted) {
-                //NEEDS SOME CHANGES TO THE REMOVED FUNCTION AND TO QUERY
+                console.log('FILTERING BY DELETE')
                 emails = emails.filter((email) => email.removedAt !== null)
             }
             else if (filterBy.Sent) {
-                emails = emails.filter((email) => email.from === loggedinUser.email)
+                console.log('FILTERING BY SENT')
+                emails = emails.filter((email) => (email.from === loggedinUser.email && !email.removedAt))
             }
             else if (filterBy.Starred) {
-                emails = emails.filter((email) => email.Starred)
+                console.log('FILTERING BY STARRED')
+                emails = emails.filter((email) => email.Starred && !email.removedAt)
                 // emails = emails.filter((email) => email.Starred === true)
+            } else if (filterBy.Inbox) {
+                console.log('FILTERING BY INBOX')
+                emails = emails.filter(email => (email.from !== loggedinUser.email && !email.removedAt))
             }
         }
-
         console.log('emails', emails)
+
         return emails
     })
 }
@@ -130,6 +159,6 @@ function save(email) {
 
 
 function getDefaultFilter() {
-    return { txt: '', Deleted: false, Starred: false, Sent: false }
+    return { txt: '', Deleted: false, Starred: false, Sent: false, Inbox: true }
 
 }
