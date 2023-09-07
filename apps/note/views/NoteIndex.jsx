@@ -31,11 +31,12 @@ export function NoteIndex() {
       })
   }
 
+  //todo - render a modal (that hides the main screen, and shows current value to edit and save)
   function onEditNote(noteId) {
     console.log('hi')
   }
 
-
+  //Todo: will be used both for adding/editing later on
   function handleChange({ target }) {
     const field = target.name
     let value = target.value
