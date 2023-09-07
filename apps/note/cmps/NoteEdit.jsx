@@ -18,9 +18,11 @@ export function NoteEdit({ onAddNote, noteId = null }) {
     }
 
     return (
-        <section>
-            <input type="text" placeholder="What's on your mind..." value={inputVal} onChange={(ev) => onInputText(ev)} />
-            <button onClick={() => onAddNote(inputVal)}>Add</button>
+        <section className="form-container">
+            <section>
+                <input className="note-text" type="text" placeholder="What's on your mind..." value={inputVal} onChange={(ev) => onInputText(ev)} />
+                <button onClick={() => onAddNote(inputVal)}>Add</button>
+            </section>
         </section>
     )
 

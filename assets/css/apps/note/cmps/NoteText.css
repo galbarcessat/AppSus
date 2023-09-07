@@ -1,0 +1,27 @@
+.note-text {
+  border: none;
+  font-size: 1rem;
+  height: 100%;
+  padding: 10px;
+  margin-left: 10px;
+  width: 100%;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+
+.form-container {
+  background: #fff;
+  max-width: 598px;
+  margin: 32px auto;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  border: 1px solid #e0e1e0;
+  border-radius: 8px;
+}
+
+.form-container section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  color: #5f6368;
+}
