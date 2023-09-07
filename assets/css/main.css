@@ -27,3 +27,6 @@
 
 /* @import './apps/mail/cmps/MailList.css'; */
 
+/* Email Cmps */
+
+@import './apps/mail/cmps/EmailDetails.css';

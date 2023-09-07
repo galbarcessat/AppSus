@@ -14,8 +14,9 @@ export const EmailService = {
     query,
     get,
     remove,
-    save
-    
+    save,
+    getDefaultFilter
+
 }
 
 function _createEmails() {
@@ -75,24 +76,36 @@ function _createEmails() {
     }
     console.log('emails:', emails)
 }
-
+// FilterBy = { Deleted: false, Starred: false, Sent: false }
 function query(filterBy) {
     return storageService.query(STORAGE_KEY).then((emails) => {
-        // if (filterBy.txt) {
-        //     const regex = new RegExp(filterBy.txt, 'i')
-        //     emails = emails.filter((book) => regex.test(book.title))
-        //     console.log('books', emails)
-        // }
-        // if (filterBy.maxPrice) {
-        //     emails = emails.filter((email) => email.listPrice.amount <= filterBy.maxPrice)
-        // }
-        // console.log('books', books)
+        if (filterBy) {
+
+            // if (filterBy.txt) {
+            //     const regex = new RegExp(filterBy.txt, 'i')
+            //     emails = emails.filter((book) => regex.test(book.title))
+            //     console.log('books', emails)
+            // }
+            if (filterBy.Deleted) {
+                //NEEDS SOME CHANGES TO THE REMOVED FUNCTION AND TO QUERY
+                emails = emails.filter((email) => email.removedAt !== null)
+            }
+            else if (filterBy.Sent) {
+                emails = emails.filter((email) => email.from === loggedinUser.email)
+            }
+            else if (filterBy.Starred) {
+                emails = emails.filter((email) => email.Starred)
+                // emails = emails.filter((email) => email.Starred === true)
+            }
+        }
+
+        console.log('emails', emails)
         return emails
     })
 }
 
 function get(emailId) {
-  return storageService.get(STORAGE_KEY, emailId)
+    return storageService.get(STORAGE_KEY, emailId)
 }
 
 // function get(bookId) {
@@ -112,4 +125,10 @@ function save(email) {
     } else {
         return storageService.post(STORAGE_KEY, email)
     }
+}
+
+
+function getDefaultFilter() {
+    return { txt: '', Deleted: false, Starred: false, Sent: false }
+
 }
