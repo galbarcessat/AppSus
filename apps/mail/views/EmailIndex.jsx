@@ -9,7 +9,32 @@ import { EmailList } from "../cmps/EmailList.jsx"
 import { EmailDetails } from "../cmps/EmailDetails.jsx"
 
 export function EmailIndex() {
+    const [emails, setEmails] = useState(null)
+    const [FilterBy,setFilterBy] = useState(EmailService.getDefaultFilter())
 
+    useEffect(() => {
+        console.log('FilterBy:', FilterBy)
+        loadEmails(FilterBy)
+    }, [])
+    // [filterBy] ^^^^^
+
+    function loadEmails(filter) {
+        EmailService.query(filter).then((emails) => setEmails(emails))
+        // query(FilterBy) ^^^
+    }
+
+    function onDeleteEmail(emailId) {
+        EmailService.remove(emailId)
+            .then(() => {
+                // SET EMAIL REMOVED AT TO DATE NOW
+                setEmails((prevEmails) => prevEmails.filter((email) => email.id !== emailId))
+                //   showSuccessMsg(`Book Removed! ${bookId}`)
+            })
+            .catch((err) => {
+                console.log('err:', err)
+                //   showErrorMsg('Problem Removing ' + bookId)
+            })
+    }
 
     return (
         <section className="email-app-container">
@@ -54,8 +79,8 @@ export function EmailIndex() {
             {/* EMAIL LIST */}
             <section className="emails-display-container">
                 <Routes>
-                    <Route path="/" element={<EmailList />} />
-                    <Route path="/Details/:emailId" element={<EmailDetails />} />
+                    <Route path="/" element={<EmailList emails={emails} onDeleteEmail={onDeleteEmail} loadEmails={loadEmails} />} />
+                    <Route path="/Details/:emailId" element={<EmailDetails onDeleteEmail={onDeleteEmail} />} />
                 </Routes>
             </section>
         </section>

@@ -27,3 +27,9 @@
 @import "../../assets/css/apps/note/cmps/NoteText.css";
 
 /* @import './apps/mail/cmps/MailList.css'; */
+
+/* Email Cmps */
+
+@import './apps/mail/cmps/EmailDetails.css';
+
+@import './apps/mail/cmps/EmailDetails.css';
