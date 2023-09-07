@@ -66,7 +66,7 @@ const demoNotes = [
     // }
 ]
 
-const NOTES_KEY = 'notesDB'
+const STORAGE_KEY = 'notesDB'
 _createNotes()
 
 export const noteService = {
@@ -78,16 +78,24 @@ export const noteService = {
 }
 
 function query() {
-    return storageService.query(NOTES_KEY).then(notes => {
+    return storageService.query(STORAGE_KEY).then(notes => {
         return notes
     })
 }
 
+
+function changeNoteBgc(noteId, bgc) {
+    // edit specific note
+    // save 
+    // return promise
+
+}
+
 function save(note) {
     if (note.id) {
-        return storageService.put(NOTES_KEY, note)
+        return storageService.put(STORAGE_KEY, note)
     } else {
-        return storageService.post(NOTES_KEY, note)
+        return storageService.post(STORAGE_KEY, note)
     }
 }
 
@@ -98,16 +106,8 @@ function get(noteId) {
 }
 
 function remove(noteId) {
-    return storageService.remove(NOTES_KEY, noteId)
+    return storageService.remove(STORAGE_KEY, noteId)
 }
-
-// function get(noteId) {
-//     return storageService.get(NOTES_KEY, noteId)
-//         .then(note => {
-//             note = _setNextPrevNoteId(note)
-//             return note
-//         })
-// }
 
 function getEmptyNote() {
     return {
@@ -125,10 +125,10 @@ function getEmptyNote() {
 }
 
 function _createNotes() {
-    let notes = utilService.loadFromStorage(NOTES_KEY)
+    let notes = utilService.loadFromStorage(STORAGE_KEY)
     if (!notes || !notes.length) {
         notes = _getNotes()
-        utilService.saveToStorage(NOTES_KEY, notes)
+        utilService.saveToStorage(STORAGE_KEY, notes)
     }
 }
 
@@ -136,16 +136,6 @@ function _getNotes() {
     return demoNotes
 }
 
-
-function _makeNoteId(length = 4) {
-    var text = ''
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-    text += possible.charAt(Math.floor(Math.random() * possible.length))
-    for (var i = 1; i < length; i++) {
-        text += Math.floor(Math.random() * 10)
-    }
-    return text
-}
 
 function _makeRandBackgroundColor() {
     const colors = ['#D3BFDB', '#D4E3ED', '#F39F76', '#FAAFA7', '#EFEFF1', '#F6E2DD', '#E2F5D3', '#D3BFDB']

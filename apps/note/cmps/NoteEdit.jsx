@@ -3,10 +3,11 @@ import { noteService } from "../services/note.service.js"
 
 export function NoteEdit({ onAddNote, noteId = null }) {
     const [inputVal, setInputVal] = useState('')
+    const [isExpanded, setIsExpanded] = useState(false)
 
     useEffect(() => {
         if (noteId) loadNote(noteId)
-    })
+    }, [])
 
     function loadNote(noteId) {
         noteService.get(noteId)
@@ -17,13 +18,20 @@ export function NoteEdit({ onAddNote, noteId = null }) {
         setInputVal(value)
     }
 
+    function handleToggle() {
+        setIsExpanded(!isExpanded)
+    }
+
     return (
-        <section className="form-container">
-            <section>
+        <div className="form-container">
+            <div onClick={handleToggle} >
                 <input className="note-text" type="text" placeholder="What's on your mind..." value={inputVal} onChange={(ev) => onInputText(ev)} />
                 <button onClick={() => onAddNote(inputVal)}>Add</button>
-            </section>
-        </section>
+                {isExpanded && <div>
+                    <p>Hi there</p>
+                </div>}
+            </div>
+        </div>
     )
 
 }
