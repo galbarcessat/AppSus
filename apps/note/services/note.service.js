@@ -8,9 +8,9 @@ const demoNotes = [
         id: 'n101',
         createdAt: 1112222,
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: _makeRandBackgroundColor()
         },
         info: {
             txt: 'Fullstack Me Baby!'
@@ -20,9 +20,9 @@ const demoNotes = [
         id: 'n105',
         createdAt: 1342222,
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: _makeRandBackgroundColor()
         },
         info: {
             txt: 'Fullstack Me Baby!'
@@ -32,9 +32,9 @@ const demoNotes = [
         id: 'n104',
         createdAt: 1112244,
         type: 'NoteTxt',
-        isPinned: true,
+        isPinned: false,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: _makeRandBackgroundColor()
         },
         info: {
             txt: 'Fullstack Me Baby!'
@@ -116,7 +116,7 @@ function getEmptyNote() {
         type: 'NoteTxt',
         isPinned: false,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: _makeRandBackgroundColor()
         },
         info: {
             txt: 'Fullstack Me Baby!'
@@ -137,7 +137,20 @@ function _getNotes() {
 }
 
 
+function _makeNoteId(length = 4) {
+    var text = ''
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    text += possible.charAt(Math.floor(Math.random() * possible.length))
+    for (var i = 1; i < length; i++) {
+        text += Math.floor(Math.random() * 10)
+    }
+    return text
+}
 
+function _makeRandBackgroundColor() {
+    const colors = ['#D3BFDB', '#D4E3ED', '#F39F76', '#FAAFA7', '#EFEFF1', '#F6E2DD', '#E2F5D3', '#D3BFDB']
+    return colors[Math.floor(Math.random() * colors.length)]
+}
 
 
 

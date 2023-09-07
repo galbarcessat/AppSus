@@ -1,6 +1,7 @@
 import { noteService } from "../services/note.service.js"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
+import { NoteEdit } from '../cmps/NoteEdit.jsx'
 
 const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
@@ -8,7 +9,6 @@ const { Link } = ReactRouterDOM
 export function NoteIndex() {
   const [isLoadingNotes, setIsLoadingNotes] = useState(true);
   const [notes, setNotes] = useState(null)
-  const [noteToAdd, setNoteToAdd] = useState(noteService.getEmptyNote())
 
   useEffect(() => {
     noteService.query().then((notes) => {
@@ -23,11 +23,11 @@ export function NoteIndex() {
       .remove(noteId)
       .then(() => {
         setNotes((prevNotes) => prevNotes.filter((note) => note.id !== noteId))
-        showSuccessMsg(`Book Removed! ${bookId}`)
+        showSuccessMsg(`Note Removed! ${noteId}`)
       })
       .catch((err) => {
         console.log('err:', err)
-        showErrorMsg('Problem with removing book - try again')
+        showErrorMsg('Problem with removing note - try again')
       })
   }
 
@@ -58,12 +58,15 @@ export function NoteIndex() {
   }
 
 
-  function onSaveNote(ev) {
-    ev.preventDefault()
-    noteService.save(noteToAdd)
-      .then(() => {
-        const updatedNotes = [...notes, noteToAdd];
-        setNotes(updatedNotes)
+  function onAddNote(txt) {
+
+    const note = noteService.getEmptyNote()
+    // console.log('noteToAdd:', noteToAdd)
+    note.info.txt = txt
+    noteService.save(note)
+      .then((newNote) => {
+        const updatedNotes = [...notes, newNote];
+        setNotes(prevNotes => [...prevNotes, newNote])
       })
       .catch(err => console.log('err:', err))
   }
@@ -74,18 +77,7 @@ export function NoteIndex() {
   return (
     <div className="search">
       <section className="note-add">
-        <form onSubmit={onSaveNote}>
-          <label htmlFor="info"></label>
-          <input
-            placeholder="What's on your mind"
-            type="text"
-            name="info"
-            id="info"
-            onChange={handleChange} // Bind the input value to the noteToAdd.info property
-            value={noteToAdd.info.text}
-          />
-          <button>Add</button>
-        </form>
+        <NoteEdit onAddNote={onAddNote} />
       </section>
       <NoteList notes={notes} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
     </div>
