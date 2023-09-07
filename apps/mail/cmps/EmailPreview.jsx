@@ -1,22 +1,17 @@
 const { useState, useEffect } = React
 const { Link, useNavigate } = ReactRouterDOM
 
-export function EmailPreview({ email, onDeleteEmail,loadEmails }) {
+export function EmailPreview({ email, onDeleteEmail }) {
     const navigate = useNavigate()
 
-    // Maybe instead of loading all the Emails reload only this email preview
-    useEffect(()=>{
-        loadEmails()
-    },[email.isRead])
 
     function getFormatedDate(timestamp) {
         const date = new Date(timestamp)
         return date.toLocaleDateString()
     }
 
-    // console.log('email.isRead:', email.isRead)
     let dynClassIsRead = email.isRead ? 'read' : 'unread'
-    console.log('dynClassIsRead:', dynClassIsRead)
+    // console.log('dynClassIsRead:', dynClassIsRead)
 
     return (
         <div className={"email-row " + dynClassIsRead} onClick={() => { navigate(`Details/${email.id}`) }}>
@@ -27,7 +22,7 @@ export function EmailPreview({ email, onDeleteEmail,loadEmails }) {
                 </div>
                 <h3 className="email-from-txt">{email.from}</h3>
             </div>
-            <div className="email-body">
+            <div className="body">
                 <h4>
                     {email.subject} -
                 </h4>

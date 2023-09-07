@@ -79,6 +79,7 @@ function _createEmails() {
 // FilterBy = { Deleted: false, Starred: false, Sent: false }
 function query(filterBy) {
     return storageService.query(STORAGE_KEY).then((emails) => {
+        //NORMAL STATE FILTERS ALL THE EMAILS THAT revmovedAt === null if they have removed at they belong to filterby.deleted
         if (filterBy) {
 
             // if (filterBy.txt) {

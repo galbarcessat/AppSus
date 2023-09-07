@@ -10,7 +10,7 @@ import { EmailDetails } from "../cmps/EmailDetails.jsx"
 
 export function EmailIndex() {
     const [emails, setEmails] = useState(null)
-    const [FilterBy,setFilterBy] = useState(EmailService.getDefaultFilter())
+    const [FilterBy, setFilterBy] = useState(EmailService.getDefaultFilter())
 
     useEffect(() => {
         console.log('FilterBy:', FilterBy)
@@ -34,6 +34,13 @@ export function EmailIndex() {
                 console.log('err:', err)
                 //   showErrorMsg('Problem Removing ' + bookId)
             })
+    }
+
+    function onReadMail(email) {
+        if (!emails) return
+        const idx = emails.findIndex(mail => mail.id === email.id)
+        emails[idx] = email
+        setEmails([...emails])
     }
 
     return (
@@ -79,9 +86,11 @@ export function EmailIndex() {
             {/* EMAIL LIST */}
             <section className="emails-display-container">
                 <Routes>
-                    <Route path="/" element={<EmailList emails={emails} onDeleteEmail={onDeleteEmail} loadEmails={loadEmails} />} />
-                    <Route path="/Details/:emailId" element={<EmailDetails onDeleteEmail={onDeleteEmail} />} />
+                    <Route path="/" element={<EmailList emails={emails} onDeleteEmail={onDeleteEmail} />} />
+                    <Route path="/Details/:emailId" element={<EmailDetails onDeleteEmail={onDeleteEmail} onReadMail={onReadMail} />} />
                 </Routes>
+
+                {/* COMPOSE MODAL HERE WITH &&ComposeIsSelected poistion fixed */}
             </section>
         </section>
     )

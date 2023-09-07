@@ -170,20 +170,30 @@
  /* CHANGE TO DISPLAY GRID SO EVERYTHING WILL BE ALIGNED CORRECELY */
  .email-row {
      display: flex;
-     justify-content: space-between;
+     /* justify-content: space-between; */
+     gap: 10px;
      align-items: center;
      padding: 10px 0;
      padding-left: 10px;
      border-bottom: 1px solid #BABEC1;
      cursor: pointer;
      position: relative;
+
+     .body {
+         display: flex;
+         align-items: center;
+         justify-content: start;
+         flex-grow: 1;
+    
+     }
  }
 
  .read {
      background-color: #F2F6FC;
  }
+
  .unread {
-    background-color: white;
+     background-color: white;
  }
 
  .email-row:hover {
@@ -193,19 +203,16 @@
 
  .email-from-content {
      display: flex;
-     justify-content: center;
      align-items: center;
+
+     width: 250px;
  }
 
- .email-body {
-     display: flex;
-     align-items: center;
-     justify-content: start;
- }
 
  .fa-square,
  .fa-star {
-     margin-inline-end: 7px;
+     margin-inline-end: 12px;
+     color: #BABEC1;
  }
 
  .fa-star:hover {
