@@ -185,7 +185,7 @@ export function EmailIndex() {
                             onSetFilterBy('Deleted')
                             setSideMenuFolder('Deleted')
                         }}
-                            className={"sidebar-icon " + (sideMenuFolder === 'Deleted' ? 'active' : '')}><span className="material-symbols-outlined icon">delete</span><span>Deleted</span>
+                            className={"sidebar-icon " + (sideMenuFolder === 'Deleted' ? 'active' : '')}><span className="material-symbols-outlined icon">delete</span><span>Trash</span>
                         </div>
                     </div>
                 </div>

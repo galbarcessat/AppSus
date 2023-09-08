@@ -15,7 +15,8 @@ export const EmailService = {
     get,
     remove,
     save,
-    getDefaultFilter
+    getDefaultFilter,
+    getEmptyEmail
 
 }
 
@@ -97,13 +98,33 @@ function _createEmails() {
             removedAt: null,
             from: 'user@appsus.com',
             to: 'eyalB@hello.com'
+        }, {
+            id: 'e108',
+            subject: 'You got rich!',
+            body: 'Money money a lot of moeny you are now rich',
+            isRead: false,
+            isStarred: false,
+            sentAt: 1422322230294,
+            removedAt: null,
+            from: 'money@appsus.com',
+            to: 'user@appsus.com'
+        }, {
+            id: 'e109',
+            subject: 'React applications',
+            body: 'With react you can make a lot of dynamic applications',
+            isRead: false,
+            isStarred: false,
+            sentAt: 1622322930222,
+            removedAt: null,
+            from: 'reactWeb@appsus.com',
+            to: 'user@appsus.com'
         },]
 
         utilService.saveToStorage(STORAGE_KEY, emails)
     }
     // console.log('emails:', emails)
 }
-// FilterBy = { Deleted: false, Starred: false, Sent: false }
+
 function query(filterBy, sortBy) {
     return storageService.query(STORAGE_KEY).then((emails) => {
         console.log('filterBy:', filterBy)
@@ -128,7 +149,6 @@ function query(filterBy, sortBy) {
             else if (filterBy.Starred) {
                 console.log('FILTERING BY STARRED')
                 emails = emails.filter((email) => email.isStarred && !email.removedAt)
-                // emails = emails.filter((email) => email.Starred === true)
             } else if (filterBy.Inbox) {
                 console.log('FILTERING BY INBOX')
                 emails = emails.filter(email => (email.from !== loggedinUser.email && !email.removedAt))
@@ -175,12 +195,6 @@ function get(emailId) {
     return storageService.get(STORAGE_KEY, emailId)
 }
 
-// function get(bookId) {
-//     return storageService.get(STORAGE_KEY, bookId).then((book) => {
-//         book = _setNextPrevBookId(book)
-//         return book
-//     })
-// }
 
 function remove(emailId) {
     return storageService.remove(STORAGE_KEY, emailId)
@@ -198,4 +212,18 @@ function save(email) {
 function getDefaultFilter() {
     return { txt: '', Deleted: false, Starred: false, Sent: false, Inbox: true }
 
+}
+
+function getEmptyEmail() {
+    return {
+        id: '',
+        subject: '',
+        body: '',
+        isRead: false,
+        isStarred: false,
+        sentAt: '',
+        removedAt: null,
+        from: 'user@appsus.com',
+        to: ''
+    }
 }
