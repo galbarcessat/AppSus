@@ -139,7 +139,20 @@
     /* border-bottom-right-radius: 1em; */
     border-radius: 1em;
 }
+.count-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.count-container div{
+    display: flex;
+    align-items: center;
+    gap: 7px;
 
+}
+.isRead-counter{
+    margin-right: 15px;
+}
 
 .btn-compose {
     display: flex;

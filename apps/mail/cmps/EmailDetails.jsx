@@ -2,7 +2,7 @@ const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
 import { EmailService } from '../../mail/services/email.service.js'
 
-export function EmailDetails({ onDeleteEmail, onReadMail }) {
+export function EmailDetails({ onDeleteEmail, onReadMail, countRead }) {
     const [email, setEmail] = useState(null)
     const { emailId } = useParams()
     const navigate = useNavigate()
@@ -16,8 +16,11 @@ export function EmailDetails({ onDeleteEmail, onReadMail }) {
             .then((email => {
                 email.isRead = true
                 EmailService.save(email)
-                .then(setEmail)
-                .then(()=>onReadMail(email))
+                    .then(setEmail)
+                    .then(() => {
+                        onReadMail(email)
+                        countRead()
+                    })
             }))
             .catch((err) => console.log('err:', err))
     }

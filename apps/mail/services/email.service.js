@@ -137,8 +137,11 @@ function query(filterBy, sortBy) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 emails = emails.filter((email) => (regex.test(email.subject) && !email.removedAt))
                 console.log('books', emails)
+            } if (filterBy.All) {
+                console.log('FILTERING BY ALL')
+                emails = emails
             }
-            if (filterBy.Deleted) {
+            else if (filterBy.Deleted) {
                 console.log('FILTERING BY DELETE')
                 emails = emails.filter((email) => email.removedAt !== null)
             }
@@ -210,7 +213,7 @@ function save(email) {
 
 
 function getDefaultFilter() {
-    return { txt: '', Deleted: false, Starred: false, Sent: false, Inbox: true }
+    return { txt: '', Deleted: false, Starred: false, Sent: false, Inbox: true, All: false }
 
 }
 

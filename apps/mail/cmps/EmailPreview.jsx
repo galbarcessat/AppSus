@@ -1,9 +1,8 @@
 const { useState, useEffect } = React
 const { Link, useNavigate } = ReactRouterDOM
 
-export function EmailPreview({ email, onDeleteEmail, onStarEmail, onToggleElement }) {
+export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
     const navigate = useNavigate()
-
 
     function getFormatedDate(timestamp) {
         const date = new Date(timestamp)
@@ -15,11 +14,6 @@ export function EmailPreview({ email, onDeleteEmail, onStarEmail, onToggleElemen
     let dynEnvelpoeElement = email.isRead ?
         <i title="Mark as unread" className="fa-regular fa-envelope email-row-icon"></i> :
         <i title="Mark as read " className="fa-regular fa-envelope-open email-row-icon"></i>
-
-
-    // let dynElement
-    // console.log('dynClassIsStarred:', dynClassIsStarred)
-    // console.log('dynClassIsRead:', dynClassIsRead)
 
     return (
         <div className={"email-row " + dynClassIsRead} onClick={() => { navigate(`Details/${email.id}`) }}>
@@ -36,7 +30,7 @@ export function EmailPreview({ email, onDeleteEmail, onStarEmail, onToggleElemen
             </div>
             <div className="email-body">
                 <span className={dynClassIsRead}>
-                    {email.subject} 
+                    {email.subject}
                 </span>
                 <span className="makaf">-</span>
                 <span className="email-body-txt">{email.body}</span>
@@ -45,7 +39,7 @@ export function EmailPreview({ email, onDeleteEmail, onStarEmail, onToggleElemen
             <span className={dynClassIsRead}>
                 {getFormatedDate(email.sentAt)}
             </span>
-            {/* CHANGE TO OPEN ENVELPOE WHEN ISREAD AND CLOSED ENVELOPE WHEN ISREAD FALSE! */}
+            
             <div className={"email-icons-container " + dynClassIsRead}>
                 <i title="Save as note" className="fa-regular fa-paper-plane email-row-icon"></i>
                 <span onClick={(e) => {
