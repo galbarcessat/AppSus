@@ -56,15 +56,19 @@
     font-size: 1.3rem;
     margin-inline-end: 0.5rem;
     cursor: pointer;
+    padding: 8px;
 }
-
+.menu-icon:hover{
+    background-color: #e3e3e3;
+    border-radius: 50%;
+}
 .gmail-txt {
     font-size: 1.5rem;
 }
 
 .input-container {
     position: relative;
-    margin-left: 5.2rem;
+    margin-left: 4.2rem;
 }
 
 .search-input {

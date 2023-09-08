@@ -1,12 +1,13 @@
-
 const { useState, useEffect } = React
 const { Route, Routes, useNavigate } = ReactRouterDOM
-
 
 import { EmailService } from "../services/email.service.js"
 import { EmailList } from "../cmps/EmailList.jsx"
 import { EmailDetails } from "../cmps/EmailDetails.jsx"
 import { EmailCompose } from "../cmps/EmailCompose.jsx"
+import { TopNavBar } from "../cmps/TopNavBar.jsx"
+import { EmailFolderList } from "../cmps/EmailFolderList.jsx"
+import { EmailSort } from "../cmps/EmailSort.jsx"
 
 export function EmailIndex() {
     const [emails, setEmails] = useState(null)
@@ -15,6 +16,7 @@ export function EmailIndex() {
     const [sideMenuFolder, setSideMenuFolder] = useState('Inbox')
     const [composeSelected, setComposeSelected] = useState(false)
     const [isReadCount, setisReadCount] = useState(0)
+    const [sideMenuOpen, setSideMenuOpen] = useState(false)
 
     const navigate = useNavigate()
 
@@ -36,12 +38,8 @@ export function EmailIndex() {
                 }
                 return count;
             }, 0);
-
-            console.log('UPDATING COUNTER', count)
             setisReadCount(count)
-            //Tried .then
         })
-
     }
 
     function onToggleElement(email, element) {
@@ -147,87 +145,12 @@ export function EmailIndex() {
     return (
         <section className="email-app-container">
 
-            {/*TOP NAV COMPONENET*/} {/* FUNCS : handleChange */}
-            <section className="top-navbar">
-                <div className="input-and-side-content">
-                    <div className="top-navbar-left-content">
-                        <i className="fa-solid fa-bars menu-icon"></i>
-                        <img className="img-gmail-logo" src="../assets/img/gmailLogo.png" alt="" />
-                        <span className="gmail-txt">Gmail</span>
-                    </div>
-                    <div className="input-container">
-                        <input className="search-input" type="text" name='txt' id='txt' placeholder="Search mail" onChange={handleChange} />
-                        {/* <input value={txt} onChange={handleChange} type='text' placeholder='By Name' id='txt' name='txt' /> */}
+            <TopNavBar handleChange={handleChange} />
 
-                        <i className="fas fa-search search-icon"></i>
-                    </div>
-                </div>
+            <EmailFolderList onOpenCompose={onOpenCompose} onSetFilterBy={onSetFilterBy} setSideMenuFolder={setSideMenuFolder} sideMenuFolder={sideMenuFolder} isReadCount={isReadCount} />
 
+            <EmailSort onSetSortBy={onSetSortBy} />
 
-                <img className="user-img" src="../assets/img/galImg.png" alt="" />
-            </section>
-
-            {/* SIDE NAV BAR COMPOMNENET */} {/* FUNCS : onOpenCompose,navigate,onSetFilterBy,setSideMenuFolder */}
-            <section className="side-navbar">
-                <div>
-                    <button onClick={onOpenCompose} className="btn-compose"><i className="fa-solid fa-pen"></i>Compose</button>
-
-                    <div className="side-bar-icons">
-                        <div onClick={() => {
-                            navigate('/email')
-                            onSetFilterBy('Inbox')
-                            setSideMenuFolder('Inbox')
-                        }}
-                            className={"sidebar-icon count-container " + (sideMenuFolder === 'Inbox' ? 'active' : '')}>
-                            <div>
-                                <span className="material-symbols-outlined icon">inbox</span>
-                                <span>Inbox</span>
-                            </div>
-                            <span className="isRead-counter">{isReadCount}</span>
-                        </div>
-                        <div onClick={() => {
-                            navigate('/email')
-                            onSetFilterBy('Starred')
-                            setSideMenuFolder('Starred')
-                        }}
-                            className={"sidebar-icon " + (sideMenuFolder === 'Starred' ? 'active' : '')}><span className="material-symbols-outlined icon">star</span><span>Starred</span>
-                        </div>
-                        <div onClick={() => {
-                            navigate('/email')
-                            onSetFilterBy('Sent')
-                            setSideMenuFolder('Sent')
-                        }}
-                            className={"sidebar-icon " + (sideMenuFolder === 'Sent' ? 'active' : '')}><span className="material-symbols-outlined icon">send</span><span>Sent</span>
-                        </div>
-                        <div onClick={() => {
-                            navigate('/email')
-                            onSetFilterBy('Deleted')
-                            setSideMenuFolder('Deleted')
-                        }}
-                            className={"sidebar-icon " + (sideMenuFolder === 'Deleted' ? 'active' : '')}><span className="material-symbols-outlined icon">delete</span><span>Trash</span>
-                        </div>
-                        <div onClick={() => {
-                            navigate('/email')
-                            onSetFilterBy('All')
-                            setSideMenuFolder('All')
-                        }}
-                            className={"sidebar-icon " + (sideMenuFolder === 'All' ? 'active' : '')}><span className="material-symbols-outlined icon">stacked_email</span><span>All Mail</span>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-            {/* SORT EMAILS COMPONENET */} {/* FUNCS : onSetSortBy */}
-            <section className="sort-emails-container">
-                <button onClick={() => onSetSortBy('isRead')}>Read</button>
-                <button onClick={() => onSetSortBy('isStarred')}>Starred</button>
-                <button onClick={() => onSetSortBy('date')}>Date</button>
-                <button onClick={() => onSetSortBy('subject')}>Subject</button>
-                <button onClick={() => onSetSortBy('none')}>No Sort</button>
-            </section>
-
-            {/* EMAIL LIST */}
             <section className="emails-display-container">
                 <Routes>
                     <Route path="/" element={<EmailList emails={emails} onDeleteEmail={onDeleteEmail} onToggleElement={onToggleElement} />} />

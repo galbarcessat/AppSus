@@ -139,7 +139,8 @@ function query(filterBy, sortBy) {
                 console.log('books', emails)
             } if (filterBy.All) {
                 console.log('FILTERING BY ALL')
-                emails = emails
+                // emails = emails
+                emails = emails.filter((email) => !email.removedAt)
             }
             else if (filterBy.Deleted) {
                 console.log('FILTERING BY DELETE')
