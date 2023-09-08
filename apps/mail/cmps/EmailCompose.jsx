@@ -37,7 +37,7 @@ export function EmailCompose({ onCloseCompose }) {
 
                 <div className="form-lower-buttons">
                     <button>Send</button>
-                    <i onClick={() => onCloseCompose()} className="fa-regular fa-trash-can"></i>
+                    <i onClick={() => onCloseCompose()} className="fa-regular fa-trash-can delete-compose-icon"></i>
                 </div>
             </form>
 

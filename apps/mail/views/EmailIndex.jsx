@@ -16,7 +16,8 @@ export function EmailIndex() {
     const [sideMenuFolder, setSideMenuFolder] = useState('Inbox')
     const [composeSelected, setComposeSelected] = useState(false)
     const [isReadCount, setisReadCount] = useState(0)
-    const [sideMenuOpen, setSideMenuOpen] = useState(false)
+    const [sideMenuState, setSideMenuState] = useState(false)
+
 
     const navigate = useNavigate()
 
@@ -40,6 +41,11 @@ export function EmailIndex() {
             }, 0);
             setisReadCount(count)
         })
+    }
+
+    function toggleSideMenu() {
+        setSideMenuState((prevSideMenuState) => !prevSideMenuState)
+        console.log('SIDE MENU TOGGLE:', sideMenuState)
     }
 
     function onToggleElement(email, element) {
@@ -141,13 +147,14 @@ export function EmailIndex() {
             setSortBy(null)
         } else setSortBy(sortBy)
     }
+    const dymHideMenuClass = sideMenuState ? 'menu-hidden' : ''
 
     return (
-        <section className="email-app-container">
+        <section className={"email-app-container " + dymHideMenuClass}>
 
-            <TopNavBar handleChange={handleChange} />
+            <TopNavBar handleChange={handleChange} toggleSideMenu={toggleSideMenu} />
 
-            <EmailFolderList onOpenCompose={onOpenCompose} onSetFilterBy={onSetFilterBy} setSideMenuFolder={setSideMenuFolder} sideMenuFolder={sideMenuFolder} isReadCount={isReadCount} />
+            <EmailFolderList onOpenCompose={onOpenCompose} onSetFilterBy={onSetFilterBy} setSideMenuFolder={setSideMenuFolder} sideMenuFolder={sideMenuFolder} isReadCount={isReadCount} sideMenuState={sideMenuState} />
 
             <EmailSort onSetSortBy={onSetSortBy} />
 

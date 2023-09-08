@@ -1,5 +1,5 @@
 
-export function TopNavBar({ handleChange }) {
+export function TopNavBar({ handleChange, toggleSideMenu }) {
 
 
     return (
@@ -7,7 +7,7 @@ export function TopNavBar({ handleChange }) {
             <div className="input-and-side-content">
 
                 <div className="top-navbar-left-content">
-                    <i className="fa-solid fa-bars menu-icon"></i>
+                    <i onClick={() => toggleSideMenu()} className="fa-solid fa-bars menu-icon"></i>
                     <img className="img-gmail-logo" src="../assets/img/gmailLogo.png" alt="" />
                     <span className="gmail-txt">Gmail</span>
                 </div>
@@ -18,7 +18,7 @@ export function TopNavBar({ handleChange }) {
                 </div>
 
             </div>
-            
+
             <img className="user-img" src="../assets/img/galImg.png" alt="" />
         </section>
     )

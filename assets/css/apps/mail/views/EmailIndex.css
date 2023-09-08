@@ -13,6 +13,13 @@
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-template-rows: 64px 50px 1fr;
+
+}
+
+/* // SIDE MENU HIDE - MAKES IT SMALLER */
+.menu-hidden {
+    grid-template-columns: 72px 1fr;
+
 }
 
 .emails-display-container {
@@ -58,10 +65,12 @@
     cursor: pointer;
     padding: 8px;
 }
-.menu-icon:hover{
+
+.menu-icon:hover {
     background-color: #e3e3e3;
     border-radius: 50%;
 }
+
 .gmail-txt {
     font-size: 1.5rem;
 }
@@ -76,18 +85,22 @@
     background-color: #EAF1FB;
     border: 0px;
     padding: 1.2em;
-    width: 31em;
+    padding-left: 3.3em;
+    width: 40em;
     font-family: openSans, sans-serif;
+}
+.search-input::placeholder {
+    font-size: 16px; /* Set the desired font size */
 }
 
 .search-input:focus {
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.25);
 
 }
 
 .search-icon {
     position: absolute;
-    right: 15px;
+    left: 15px;
     top: 50%;
     transform: translate(0, -50%);
 }
@@ -98,7 +111,6 @@
     height: 35px;
     margin-right: 1rem;
 }
-
 
 
 /* SIDE BAR ------ */
@@ -112,7 +124,6 @@
     height: 100vh;
     grid-row: 2/3;
     grid-column: 1/2;
-    padding-left: 1em;
 }
 
 .side-navbar div {
@@ -132,66 +143,57 @@
     align-items: center;
     padding: 0.5em 0;
     margin: 0.5em 0;
+    padding-left: 1em;
     cursor: pointer;
 }
 
 .sidebar-icon:hover,
 .active {
-    /* background-color: #eaebef; */
-    background-color: rgb(211,227,253);
-    /* border-top-right-radius: 1em; */
-    /* border-bottom-right-radius: 1em; */
-    border-radius: 1em;
+    background-color: rgb(211, 227, 253);
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
 }
-.count-container{
+
+.count-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.count-container div{
+
+.count-container div {
     display: flex;
     align-items: center;
     gap: 7px;
 
 }
-.isRead-counter{
+
+.isRead-counter {
     margin-right: 15px;
 }
 
 .btn-compose {
     display: flex;
+    align-items: center;
     gap: 1em;
     background-color: #c2e7ff;
-    padding: 1.2em 2.2em;
+    padding: 1.2em 1.8em;
     border-radius: 1.5em;
     border: 0px;
     margin-bottom: 1em;
+    margin-left: 0.5em;
     cursor: pointer;
+
 }
+
+.compose-hidden {
+    padding: 1.2em 1em;
+}
+
 
 .btn-compose:hover {
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
         0 2px 6px 2px rgba(60, 64, 67, 0.15);
 }
-
-.btn-compose {
-    display: flex;
-    gap: 1em;
-    background-color: #C2E7FF;
-    padding: 1.2em 2.2em;
-    border-radius: 1.5em;
-    border: 0px;
-    margin-bottom: 1em;
-    cursor: pointer;
-    transition: 0.6 all;
-}
-
-.btn-compose:hover {
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
-    transition: 0.6 all;
-}
-
-/* EMAIL ROW LAYOUT */
 
 /* SORT EMAILS COMPONENT----- */
 
@@ -219,7 +221,8 @@
 
 }
 
-/* CHANGE TO DISPLAY GRID SO EVERYTHING WILL BE ALIGNED CORRECELY */
+/* EMAIL ROW LAYOUT */
+
 .email-row {
     display: flex;
     gap: 10px;
@@ -256,7 +259,6 @@
     font-weight: bold;
 }
 
-
 .email-icons-container {
     display: none;
     align-items: center;
@@ -265,7 +267,6 @@
     right: 0;
     padding-right: 0.3em;
     font-size: 1.3em;
-    /* background-color: white; */
 }
 
 .email-from-content {
