@@ -52,7 +52,10 @@ export function NoteEdit({ onAddNote, handleChange, noteId = null }) {
                         add_photo_alternate
                     </span>
                 </button>
-                <button className="material-symbols-outlined logo" onClick={() => handleChange('videoUrl')}>
+                <button className="material-symbols-outlined logo" onClick={() => {
+                    onAddVideo
+                    handleChange('videoUrl')
+                }}>
                     <span>
                         smart_display
                     </span>
