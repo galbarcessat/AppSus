@@ -101,6 +101,15 @@
      padding: 1em;
      border: 1px solid lightgrey;
      border-radius: 1em;
+     font-size: 1.1rem;
+ }
+
+ .img-and-title-container {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     gap: 1em;
  }
 
  .card-app-img {

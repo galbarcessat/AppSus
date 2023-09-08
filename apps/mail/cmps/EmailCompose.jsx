@@ -34,6 +34,7 @@ export function EmailCompose({ onCloseCompose }) {
                 <div className='line'></div>
 
                 <input required onChange={handleChange} type="text" name="body" id="compose-body" className="compose-body" />
+                {/* try to change to textarea */}
 
                 <div className="form-lower-buttons">
                     <button>Send</button>

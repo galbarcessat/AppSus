@@ -24,21 +24,28 @@ export function Home() {
         <h2 className="our-apps-title" ref={cardsAppsRef}>Our Apps</h2>
         <section className="cards-apps-container" >
             <div className="card-app">
-                <img className="card-app-img" src="../assets/img/gmailLogo.png" alt="" />
-                <h3>AppSus Mail</h3>
+                <div className="img-and-title-container">
+                    <img className="card-app-img" src="../assets/img/gmailLogo.png" alt="" />
+                    <h3>AppSus Mail</h3>
+                </div>
                 <p>"Effortlessly manage your email with our user-friendly AppSus mail app.
                     Stay organized, and streamline your inbox for effective communication on the go."</p>
                 <button className="card-app-button"><Link to="/email">Learn more</Link></button>
             </div>
             <div className="card-app">
-                <img className="card-app-img" src="../assets/img/keepsLogo.png" alt="" />
-                <h3>AppSus Keeps</h3>
+                <div className="img-and-title-container">
+                    <img className="card-app-img" src="../assets/img/keepsLogo.png" alt="" />
+                    <h3>AppSus Keeps</h3>
+                </div>
                 <p>"Capture your thoughts and ideas instantly. Enhance your notes with photos and more using AppSus Notes."</p>
                 <button className="card-app-button"><Link to="/note">Learn more</Link></button>
             </div>
             <div className="card-app">
-                <img className="card-app-img" src="../assets/img/booksLogo.png" alt="" />
-                <h3>AppSus Books</h3>
+                <div className="img-and-title-container">
+                    <img className="card-app-img" src="../assets/img/booksLogo.png" alt="" />
+                    <h3>AppSus Books</h3>
+                </div>
+
                 <p>"Explore the world's largest collection of full-text books with our extensive index using the AppSus Books app."</p>
                 <button className="card-app-button"><Link to="/book">Learn more</Link></button>
             </div>
