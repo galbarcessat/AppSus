@@ -7,22 +7,20 @@ const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
 
 export function NoteIndex() {
-  const [isLoadingNotes, setIsLoadingNotes] = useState(true);
+  const [isLoadingNotes, setIsLoadingNotes] = useState(true)
   const [notes, setNotes] = useState(null)
   // const [pinnedNotes, setPinnedNotes] = useState(null)
   // const [unPinnedNotes, setUnPinnedNotes] = useState(null)
-
+  console.log('notes', notes)
   useEffect(() => {
+    console.log('notes:', notes)
     noteService.query().then((notes) => {
       setNotes(notes)
       // console.log('notes:', notes)
-      setIsLoadingNotes(false);
+      setIsLoadingNotes(false)
     })
   }, [])
 
-  useEffect(() => {
-    console.log('notes:', notes)
-  }, [notes])
 
   //removing note button, passing it forward to the child in the return
   function onRemoveNote(noteId) {
@@ -41,13 +39,16 @@ export function NoteIndex() {
 
 
   function onEditNote(note) {
-    // const notedIdx = notes.findIndex(noteFromDB => noteFromDB.id === note.id)
-    // const notesCopy = [...notes]
-    // notesCopy[notedIdx] = note
-    // setNotes(notesCopy)
+    console.log('note:', note)
+    noteService.get(note.id)
+      .then(noteFromDB => {
+        const notedIdx = notes.findIndex(n => n.id === noteFromDB.id)
+        const notesCopy = [...notes]
+        notesCopy[notedIdx] = note
+        setNotes(notesCopy)
+      })
   }
 
-  //Todo: will be used both for adding/editing later on
   function handleChange({ target }) {
     const field = target.name
     let value = target.value
@@ -56,25 +57,27 @@ export function NoteIndex() {
       case 'number':
       case 'range':
         value = +value || ''
-        break;
+        break
 
       case 'checkbox':
 
       default:
-        break;
+        break
     }
 
-    const updatedNoteToAdd = { ...noteToAdd, [field]: { txt: value } };
+    const updatedNoteToAdd = { ...noteToAdd, [field]: { txt: value } }
     setNoteToAdd(updatedNoteToAdd)
   }
 
-  function onChangeBGC(noteId, newBgc) {
-    // noteService.changeNoteBGC
-    // then => onEditNote(newNote)
 
-
-    console.log(noteId, newBgc)
+  function onChangeBGC(note, newBgc) {
+    console.log('note in onChangeBGC:', note)
+    noteService.changeNoteBGC(note, newBgc)
+      .then(updatedNote => {
+        onEditNote(updatedNote)
+      })
   }
+
 
   function onBlurNote({ target }, noteId) {
     noteService.get(noteId)
@@ -95,20 +98,28 @@ export function NoteIndex() {
       .then((note) => {
         console.log('note:', note)
         setNotes((prevNotes) => [...prevNotes, note])
+        setInputVal('')
       })
       .catch(err => console.log('err:', err))
   }
 
+  function onAddVideoUrl(url) {
+    console.log('hi:', hi)
+  }
 
-  if (isLoadingNotes) return <div>Loading...</div>;
+  function onAddImageUrl(url) {
+    console.log('hi:', hi)
+  }
+
+  if (isLoadingNotes) return <div>Loading...</div>
 
   return (
     <div className="search">
       <section className="note-add">
-        <NoteEdit onAddNote={onAddNote} />
+        <NoteEdit onAddNote={onAddNote} handleChange={handleChange} />
       </section>
 
-      <NoteList notes={notes} onBlurNote={onBlurNote} onChangeBGC={onChangeBGC} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
+      <NoteList setNotes={setNotes} notes={notes} onBlurNote={onBlurNote} onChangeBGC={onChangeBGC} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
     </div>
-  );
+  )
 }
