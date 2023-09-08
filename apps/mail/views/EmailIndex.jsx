@@ -6,13 +6,14 @@ const { Route, Routes, useNavigate } = ReactRouterDOM
 import { EmailService } from "../services/email.service.js"
 import { EmailList } from "../cmps/EmailList.jsx"
 import { EmailDetails } from "../cmps/EmailDetails.jsx"
+import { EmailCompose } from "../cmps/EmailCompose.jsx"
 
 export function EmailIndex() {
     const [emails, setEmails] = useState(null)
     const [FilterBy, setFilterBy] = useState(EmailService.getDefaultFilter())
     const [sortBy, setSortBy] = useState(null)
     const [sideMenuFolder, setSideMenuFolder] = useState('Inbox')
-    const [composeSelected, setComposeSelected] = useState(null)
+    const [composeSelected, setComposeSelected] = useState(false)
 
     const navigate = useNavigate()
 
@@ -25,11 +26,6 @@ export function EmailIndex() {
         EmailService.query(filter, sort).then((emails) => setEmails(emails))
     }
 
-    
-
-    // function getCurrentFolder() {
-
-    // }
 
     function onToggleElement(email, element) {
         if (!emails) return
@@ -52,22 +48,13 @@ export function EmailIndex() {
 
     }
 
-    // function onDeleteEmail(emailId) {
-    //     EmailService.get(emailId).then(email => {
-    //         email.removedAt = Date.now()
-    //         return email
-    //     })
-    //         .then(email => {
-    //             EmailService.save(email).then(email => {
-    //                 const idx = emails.findIndex(mail => mail.id === email.id)
-    //                 let emailsCopy = [...emails]
-    //                 emailsCopy[idx] = email
-    //                 loadEmails(FilterBy)
-    //             })
+    function onOpenCompose() {
+        setComposeSelected(true)
+    }
+    function onCloseCompose() {
+        setComposeSelected(false)
 
-    //         })
-    //         .catch(err => console.log('err:', err))
-    // }
+    }
 
     function onFinalDeleteEmail(emailId) {
         EmailService.remove(emailId)
@@ -137,21 +124,11 @@ export function EmailIndex() {
         let value = target.value
         filterByTxt(value)
     }
+
     function onSetSortBy(sortBy) {
-        if(sortBy === 'none'){
+        if (sortBy === 'none') {
             setSortBy(null)
         } else setSortBy(sortBy)
-
-        // if (sortBy === 'subject') {
-        //     setSortBy(sortBy)
-        // }else if(sortBy === 'date'){
-        //     setSortBy(sortBy)
-        // } else if(sortBy === 'isRead'){
-        // setSortBy()
-        // }else if (sortBy === 'none') {
-        //     setSortBy(null)
-        // }
-
     }
 
     return (
@@ -178,14 +155,15 @@ export function EmailIndex() {
             {/* SIDE NAV BAR COMPOMNENET */}
             <section className="side-navbar">
                 <div>
-                    <button className="btn-compose"><i className="fa-solid fa-pen"></i>Compose</button>
+                    <button onClick={onOpenCompose} className="btn-compose"><i className="fa-solid fa-pen"></i>Compose</button>
+
                     <div className="side-bar-icons">
                         <div onClick={() => {
                             navigate('/email')
                             onSetFilterBy('Inbox')
                             setSideMenuFolder('Inbox')
                         }}
-                        className={"sidebar-icon " + (sideMenuFolder === 'Inbox' ? 'active' : '')}
+                            className={"sidebar-icon " + (sideMenuFolder === 'Inbox' ? 'active' : '')}
                         ><span className="material-symbols-outlined icon">inbox</span><span>Inbox</span>
                         </div>
                         <div onClick={() => {
@@ -193,21 +171,21 @@ export function EmailIndex() {
                             onSetFilterBy('Starred')
                             setSideMenuFolder('Starred')
                         }}
-                        className={"sidebar-icon " + (sideMenuFolder === 'Starred' ? 'active' : '')}><span className="material-symbols-outlined icon">star</span><span>Starred</span>
+                            className={"sidebar-icon " + (sideMenuFolder === 'Starred' ? 'active' : '')}><span className="material-symbols-outlined icon">star</span><span>Starred</span>
                         </div>
                         <div onClick={() => {
                             navigate('/email')
                             onSetFilterBy('Sent')
                             setSideMenuFolder('Sent')
                         }}
-                        className={"sidebar-icon " + (sideMenuFolder === 'Sent' ? 'active' : '')}><span className="material-symbols-outlined icon">send</span><span>Sent</span>
+                            className={"sidebar-icon " + (sideMenuFolder === 'Sent' ? 'active' : '')}><span className="material-symbols-outlined icon">send</span><span>Sent</span>
                         </div>
                         <div onClick={() => {
                             navigate('/email')
                             onSetFilterBy('Deleted')
                             setSideMenuFolder('Deleted')
                         }}
-                        className={"sidebar-icon " + (sideMenuFolder === 'Deleted' ? 'active' : '')}><span className="material-symbols-outlined icon">delete</span><span>Deleted</span>
+                            className={"sidebar-icon " + (sideMenuFolder === 'Deleted' ? 'active' : '')}><span className="material-symbols-outlined icon">delete</span><span>Deleted</span>
                         </div>
                     </div>
                 </div>
@@ -229,8 +207,10 @@ export function EmailIndex() {
                     <Route path="/Details/:emailId" element={<EmailDetails onDeleteEmail={onDeleteEmail} onReadMail={onReadMail} />} />
                 </Routes>
 
-                {/* COMPOSE MODAL HERE WITH &&ComposeIsSelected poistion fixed */}
             </section>
+
+            {composeSelected && <EmailCompose onCloseCompose={onCloseCompose} />}
+
         </section>
     )
 }
