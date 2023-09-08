@@ -118,11 +118,22 @@ function _createEmails() {
             removedAt: null,
             from: 'reactWeb@appsus.com',
             to: 'user@appsus.com'
+        },{
+            id: 'e110',
+            subject: 'LongTxt',
+            body: 'Hey testing longTxt lets see if it will work.still testing needs to get many words! more words and more words',
+            isRead: false,
+            isStarred: false,
+            sentAt: 1622444430222,
+            removedAt: null,
+            from: 'LongTxt@walla.com',
+            to: 'user@appsus.com'
         },]
 
         utilService.saveToStorage(STORAGE_KEY, emails)
     }
     // console.log('emails:', emails)
+
 }
 
 function query(filterBy, sortBy) {

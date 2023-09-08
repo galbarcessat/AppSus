@@ -1,5 +1,6 @@
 const { useState, useEffect } = React
 const { Link, useNavigate } = ReactRouterDOM
+import { LongTxt } from '../cmps/LongTxt.jsx'
 
 export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
     const navigate = useNavigate()
@@ -33,13 +34,13 @@ export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
                     {email.subject}
                 </span>
                 <span className="makaf">-</span>
-                <span className="email-body-txt">{email.body}</span>
+                <span className="email-body-txt"><LongTxt txt={email.body} length={100} /></span>
             </div>
 
             <span className={dynClassIsRead}>
                 {getFormatedDate(email.sentAt)}
             </span>
-            
+
             <div className={"email-icons-container " + dynClassIsRead}>
                 <i title="Save as note" className="fa-regular fa-paper-plane email-row-icon"></i>
                 <span onClick={(e) => {

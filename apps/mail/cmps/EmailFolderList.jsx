@@ -9,7 +9,7 @@ export function EmailFolderList({ onSetFilterBy, setSideMenuFolder, sideMenuFold
         <section className="side-navbar">
             <div>
                 <button onClick={onOpenCompose} className={"btn-compose " + dynComposeClass}>
-                    <span class="material-symbols-outlined">edit</span>
+                    <span className="material-symbols-outlined">edit</span>
                     {!sideMenuState && <span>Compose</span>}</button>
                 <div className="side-bar-icons">
                     <div onClick={() => {
