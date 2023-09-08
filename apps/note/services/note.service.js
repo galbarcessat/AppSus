@@ -74,7 +74,8 @@ export const noteService = {
     remove,
     save,
     get,
-    getEmptyNote
+    getEmptyNote,
+    changeNoteBGC
 }
 
 function query() {
@@ -84,12 +85,23 @@ function query() {
 }
 
 
-function changeNoteBgc(noteId, bgc) {
-    // edit specific note
-    // save 
-    // return promise
-
+function changeNoteBGC(note, bgc) {
+    console.log('bgc:', bgc)
+    note.style.backgroundColor = bgc
+    return save(note)
+        .then(() => {
+            return note // resolving with the updated note
+        })
 }
+// function changeNoteBGC(note, bgc) {
+//     console.log('bgc:', bgc)
+//     note.style.backgroundColor = bgc
+//     save(note).then
+//     return new Promise((resolve, reject) => {
+//         resolve(note)
+//         console.log('notefromservice:', note)
+//     })
+// }
 
 function save(note) {
     if (note.id) {
