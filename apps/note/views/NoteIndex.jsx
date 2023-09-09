@@ -1,10 +1,8 @@
 import { noteService } from "../services/note.service.js"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
-import { NoteEdit } from '../cmps/NoteEdit.jsx'
+import CreateNoteInput from '../cmps/CreateNoteInput.jsx'
 import { NoteFilter } from "../cmps/NoteFilter.jsx"
-
-
 
 const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
@@ -15,6 +13,7 @@ export function NoteIndex() {
   const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
   const [pinnedNotes, setPinnedNotes] = useState(null)
   const [unPinnedNotes, setUnPinnedNotes] = useState(null)
+
   console.log('notes', notes)
   useEffect(() => {
     console.log('notes:', notes)
@@ -100,15 +99,16 @@ export function NoteIndex() {
       })
   }
 
-  function onAddNote(txt) {
-    if (!txt) return
-    console.log('txt:', txt)
+  function onAddNote(noteType, noteValue) {
+    if (!noteValue) return
+
     const note = noteService.getEmptyNote()
-    // console.log('noteToAdd:', noteToAdd)
-    note.info.txt = txt
+
+    note.type = noteType;
+    note.info = noteService.getNoteInfoDataByNoteType(noteType, noteValue);
+
     noteService.save(note)
       .then((note) => {
-        console.log('note:', note)
         setNotes((prevNotes) => [...prevNotes, note])
         setInputVal('')
       })
@@ -134,8 +134,9 @@ export function NoteIndex() {
       <div className="note-filter">
         <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
       </div>
+
       <section className="note-add">
-        <NoteEdit onAddNote={onAddNote} handleChange={handleChange} />
+        <CreateNoteInput onAddNote={onAddNote} handleChange={handleChange} />
       </section>
 
       <NoteList setNotes={setNotes} notes={notes} onBlurNote={onBlurNote} onChangeBGC={onChangeBGC} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />

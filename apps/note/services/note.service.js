@@ -4,53 +4,53 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 
 const demoNotes = [
-    {
-        id: 'n101',
-        createdAt: 1112222,
-        type: 'NoteTxt',
-        isPinned: false,
-        style: {
-            backgroundColor: _makeRandBackgroundColor()
-        },
-        info: {
-            txt: 'Fullstack Me Baby!'
-        }
-    },
-    {
-        id: 'n105',
-        createdAt: 1342222,
-        type: 'NoteTxt',
-        isPinned: false,
-        style: {
-            backgroundColor: _makeRandBackgroundColor()
-        },
-        info: {
-            txt: 'Fullstack Me Baby!'
-        }
-    },
-    {
-        id: 'n104',
-        createdAt: 1112244,
-        type: 'NoteTxt',
-        isPinned: false,
-        style: {
-            backgroundColor: _makeRandBackgroundColor()
-        },
-        info: {
-            txt: 'Fullstack Me Baby!'
-        }
-    },
-    {
-        id: 'n102',
-        type: 'NoteVideo',
-        isPinned: false,
-        info: {
-            url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-        },
-        style: {
-            backgroundColor: '#00d'
-        }
-    },
+    // {
+    //     id: 'n101',
+    //     createdAt: Date.now(),
+    //     type: 'NoteTxt',
+    //     isPinned: false,
+    //     style: {
+    //         backgroundColor: _makeRandBackgroundColor()
+    //     },
+    //     info: {
+    //         txt: 'Fullstack Me Baby!'
+    //     }
+    // },
+    // {
+    //     id: 'n105',
+    //     createdAt: Date.now(),
+    //     type: 'NoteTxt',
+    //     isPinned: false,
+    //     style: {
+    //         backgroundColor: _makeRandBackgroundColor()
+    //     },
+    //     info: {
+    //         txt: 'Fullstack Me Baby!'
+    //     }
+    // },
+    // {
+    //     id: 'n104',
+    //     createdAt: Date.now(),
+    //     type: 'NoteTxt',
+    //     isPinned: false,
+    //     style: {
+    //         backgroundColor: _makeRandBackgroundColor()
+    //     },
+    //     info: {
+    //         txt: 'Fullstack Me Baby!'
+    //     }
+    // },
+    // {
+    //     id: 'n102',
+    //     type: 'NoteVideo',
+    //     isPinned: false,
+    //     info: {
+    //         url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    //     },
+    //     style: {
+    //         backgroundColor: '#00d'
+    //     }
+    // },
     // {
     //     id: 'n102',
     //     type: 'NoteImg',
@@ -80,15 +80,7 @@ const demoNotes = [
 const STORAGE_KEY = 'notesDB'
 _createNotes()
 
-export const noteService = {
-    query,
-    remove,
-    save,
-    get,
-    getEmptyNote,
-    changeNoteBGC,
-    getDefaultFilter
-}
+
 
 function query(filterBy = {}) {
     return storageService.query(STORAGE_KEY)
@@ -146,7 +138,7 @@ function remove(noteId) {
 function getEmptyNote() {
     return {
         id: '',
-        createdAt: 1112222,
+        createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,
         style: {
@@ -176,8 +168,32 @@ function _makeRandBackgroundColor() {
     return colors[Math.floor(Math.random() * colors.length)]
 }
 
+function getNoteInfoDataByNoteType(noteType, noteValue) {
+    switch (noteType) {
+        case "NoteTxt": {
+            return { txt: noteValue }
+        }
+
+        case "NoteImg": {
+            return { url: noteValue }
+        }
+
+        default: {
+            return { txt: noteValue }
+        }
+    }
+}
 
 
-
+export const noteService = {
+    query,
+    remove,
+    save,
+    get,
+    getEmptyNote,
+    changeNoteBGC,
+    getDefaultFilter,
+    getNoteInfoDataByNoteType
+}
 
 
