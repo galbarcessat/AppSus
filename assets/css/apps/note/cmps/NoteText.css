@@ -27,6 +27,11 @@
   outline: none;
 }
 
+.edit-note-text {
+  opacity: 0.2;
+  font-size: 0.8rem;
+}
+
 /* should be in a sparated file for noteTypeButton component */
 .note-type-button {
   flex-shrink: 0;
@@ -40,7 +45,7 @@
   transition: background-color 200ms ease;
 
   &:hover {
-    background-color: gray;
+    background-color: rgb(200, 199, 199);
   }
 }
 

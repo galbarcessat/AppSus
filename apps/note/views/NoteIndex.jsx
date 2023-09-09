@@ -110,7 +110,7 @@ export function NoteIndex() {
     noteService.save(note)
       .then((note) => {
         setNotes((prevNotes) => [...prevNotes, note])
-        setInputVal('')
+        // setInputVal('')
       })
       .catch(err => console.log('err:', err))
   }
@@ -119,13 +119,7 @@ export function NoteIndex() {
 
   }
 
-  function onAddVideoUrl(url) {
-    console.log('hi:', hi)
-  }
 
-  function onAddImageUrl(url) {
-    console.log('hi:', hi)
-  }
 
   if (isLoadingNotes) return <div>Loading...</div>
 
