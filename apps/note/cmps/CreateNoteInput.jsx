@@ -39,7 +39,6 @@ export default function CreateNoteInput(props) {
 
     function onInputKeyDown(e) {
         if (e.key == "Enter") {
-            debugger
             onAddNote(noteType, inputVal);
             setInputVal('')
         }
