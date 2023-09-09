@@ -3,6 +3,8 @@ import { NoteList } from "../cmps/NoteList.jsx"
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 import { NoteEdit } from '../cmps/NoteEdit.jsx'
 
+
+
 const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
 
@@ -37,7 +39,6 @@ export function NoteIndex() {
       })
   }
 
-
   function onEditNote(note) {
     console.log('note:', note)
     noteService.get(note.id)
@@ -69,7 +70,6 @@ export function NoteIndex() {
     setNoteToAdd(updatedNoteToAdd)
   }
 
-
   function onChangeBGC(note, newBgc) {
     console.log('note in onChangeBGC:', note)
     noteService.changeNoteBGC(note, newBgc)
@@ -78,7 +78,6 @@ export function NoteIndex() {
       })
   }
 
-
   function onBlurNote({ target }, noteId) {
     noteService.get(noteId)
       .then(note => {
@@ -86,7 +85,6 @@ export function NoteIndex() {
         noteService.save(note)
       })
   }
-
 
   function onAddNote(txt) {
     if (!txt) return

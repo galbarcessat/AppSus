@@ -40,12 +40,23 @@ const demoNotes = [
             txt: 'Fullstack Me Baby!'
         }
     },
+    {
+        id: 'n102',
+        type: 'NoteVideo',
+        isPinned: false,
+        info: {
+            url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        },
+        style: {
+            backgroundColor: '#00d'
+        }
+    },
     // {
     //     id: 'n102',
     //     type: 'NoteImg',
     //     isPinned: false,
     //     info: {
-    //         url: 'http://some-img/me',
+    //         url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
     //         title: 'Bobi and Me'
     //     },
     //     style: {
