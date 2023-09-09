@@ -8,7 +8,7 @@ export function TopNavBar({ handleChange, toggleSideMenu }) {
 
                 <div className="top-navbar-left-content">
                     <i onClick={() => toggleSideMenu()} className="fa-solid fa-bars menu-icon"></i>
-                    <img className="img-gmail-logo" src="../assets/img/gmailLogo.png" alt="" />
+                    <img className="img-gmail-logo" src="assets/img/gmailLogo.png" alt="" />
                     <span className="gmail-txt">Gmail</span>
                 </div>
 
@@ -19,7 +19,7 @@ export function TopNavBar({ handleChange, toggleSideMenu }) {
 
             </div>
 
-            <img className="user-img" src="../assets/img/galTeamImg.png" alt="" />
+            <img className="user-img" src="assets/img/galTeamImg.png" alt="" />
         </section>
     )
 }

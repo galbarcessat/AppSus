@@ -13,7 +13,7 @@ export function Home() {
 
     return <section className="home">
         <div className="home-big-logo">
-            <img className="home-horse-img" src="../assets/img/horseImg.png" alt="" />
+            <img className="home-horse-img" src="assets/img/horseImg.png" alt="" />
             <p>AppSus </p>
         </div>
         <p className="main-sentence">"Welcome to the ultimate app that brings together all your favorite applications in one place!
@@ -25,7 +25,7 @@ export function Home() {
         <section className="cards-apps-container" >
             <div className="card-app">
                 <div className="img-and-title-container">
-                    <img className="card-app-img" src="../assets/img/gmailLogo.png" alt="" />
+                    <img className="card-app-img" src="assets/img/gmailLogo.png" alt="" />
                     <h3>AppSus Mail</h3>
                 </div>
                 <p>"Effortlessly manage your email with our user-friendly AppSus mail app.
@@ -34,7 +34,7 @@ export function Home() {
             </div>
             <div className="card-app">
                 <div className="img-and-title-container">
-                    <img className="card-app-img" src="../assets/img/keepsLogo.png" alt="" />
+                    <img className="card-app-img" src="assets/img/keepsLogo.png" alt="" />
                     <h3>AppSus Keeps</h3>
                 </div>
                 <p>"Capture your thoughts and ideas instantly. Enhance your notes with photos and more using AppSus Notes."</p>
@@ -42,7 +42,7 @@ export function Home() {
             </div>
             <div className="card-app">
                 <div className="img-and-title-container">
-                    <img className="card-app-img" src="../assets/img/booksLogo.png" alt="" />
+                    <img className="card-app-img" src="assets/img/booksLogo.png" alt="" />
                     <h3>AppSus Books</h3>
                 </div>
 
@@ -57,7 +57,7 @@ export function Home() {
 
             <div className="card-team">
 
-                <img className="team-member-img" src="../assets/img/galTeamImg.png" alt="" />
+                <img className="team-member-img" src="assets/img/galTeamImg.png" alt="" />
                 <div className="card-team-text">
                     <h4>Gal Ben Natan</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -79,7 +79,7 @@ export function Home() {
 
             <div className="card-team last-team-card">
 
-                <img className="team-member-img" src="../assets/img/omerTeamImg.png" alt="" />
+                <img className="team-member-img" src="assets/img/omerTeamImg.png" alt="" />
                 <div className="card-team-text">
                     <h4>Omer Vered</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
