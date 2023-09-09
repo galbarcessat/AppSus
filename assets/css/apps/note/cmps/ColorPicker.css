@@ -12,3 +12,30 @@
   background-color: rgb(254, 254, 254);
   border: 1px rgb(211, 211, 211) solid;
 }
+
+.color1 {
+  background-color: #d3bfdb;
+}
+.color2 {
+  background-color: #d4e3ed;
+}
+.color3 {
+  background-color: #f39f76;
+}
+.color4 {
+  background-color: #faafa7;
+}
+.color5 {
+  background-color: #efeff1;
+}
+.color6 {
+  background-color: #e2f5d3;
+}
+
+.color:hover {
+  /* background: #f1f3f4; */
+  /* color: black; */
+  /* border-radius: 50%; */
+  opacity: 0.7;
+  cursor: pointer;
+}

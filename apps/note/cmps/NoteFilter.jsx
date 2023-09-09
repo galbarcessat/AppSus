@@ -38,13 +38,10 @@ export function NoteFilter({ filterBy, onSetFilterBy }) {
     const { txt } = filterByToEdit
     return (
         <section>
-            {/* <h2>Filter Our Notes</h2> */}
             <form className="filter-container" onSubmit={onSubmitFilter}>
-                {/* <label htmlFor="txt">name: </label> */}
-                <input className="filter-input" value={txt} onChange={handleChange} type="text" placeholder="Start typing to filter..." id="txt" name="txt" />
-
-                {/* <label htmlFor="minSpeed">Min Speed: </label>
-                <input value={minSpeed} onChange={handleChange} type="number" placeholder="By Min Speed" id="minSpeed" name="minSpeed" /> */}
+                <input
+                    className="filter-input" value={txt} onChange={handleChange} type="text" placeholder="Start typing to filter..." id="txt" name="txt"
+                />
             </form>
         </section>
     )

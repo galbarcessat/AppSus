@@ -6,7 +6,7 @@ import { storageService } from '../../../services/async-storage.service.js'
 const demoNotes = [
     {
         id: 'n101',
-        createdAt: 1112222,
+        createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,
         style: {
@@ -18,7 +18,7 @@ const demoNotes = [
     },
     {
         id: 'n105',
-        createdAt: 1342222,
+        createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,
         style: {
@@ -30,7 +30,7 @@ const demoNotes = [
     },
     {
         id: 'n104',
-        createdAt: 1112244,
+        createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,
         style: {
@@ -146,7 +146,7 @@ function remove(noteId) {
 function getEmptyNote() {
     return {
         id: '',
-        createdAt: 1112222,
+        createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,
         style: {
