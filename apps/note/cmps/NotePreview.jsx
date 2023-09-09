@@ -1,24 +1,17 @@
-
-
 const { useState, useEffect } = React
 
-// import ReactPlayer from 'react-player'
-// import { Player } from 'video-react';
 
 export function NotePreview({ note, onBlurNote, onEditNote }) {
     const { id, type, createdAt, info } = note
 
     function renderNotePreview() {
-        // TODO render Note type component by node type
 
         switch (type) {
             case "NoteTxt": {
                 return (
                     <div>
-                        {/* <p> {id} </p> */}
                         <p contentEditable suppressContentEditableWarning onBlur={() => onBlurNote(event, id)}> {info.txt} </p>
                         <p className="edit-note-text">Click on Text to edit</p>
-                        {/* <p> {new Date(createdAt).toLocaleDateString()} </p> */}
                     </div>
                 )
             }
@@ -34,7 +27,7 @@ export function NotePreview({ note, onBlurNote, onEditNote }) {
 
                     // <video src={info.url} controls width="240" height="240" onError={(e) => console.error('Video error:', e)}>
                     // </video>
-                    <iframe src="https://www.youtube.com/channel/UC0v-tlzsn0QZwJnkiaUSJVQ" width={1000} height={500} title=''></iframe>
+                    <iframe allow='fullscreen' className="note-video" src="https://www.youtube.com/embed/uXWycyeTeCs" width={1000} height={500} title=''></iframe>
 
                 )
 
