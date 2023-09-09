@@ -2,6 +2,7 @@ import { noteService } from "../services/note.service.js"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 import { NoteEdit } from '../cmps/NoteEdit.jsx'
+import { NoteFilter } from "../cmps/NoteFilter.jsx"
 
 
 
@@ -11,8 +12,9 @@ const { Link } = ReactRouterDOM
 export function NoteIndex() {
   const [isLoadingNotes, setIsLoadingNotes] = useState(true)
   const [notes, setNotes] = useState(null)
-  // const [pinnedNotes, setPinnedNotes] = useState(null)
-  // const [unPinnedNotes, setUnPinnedNotes] = useState(null)
+  const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
+  const [pinnedNotes, setPinnedNotes] = useState(null)
+  const [unPinnedNotes, setUnPinnedNotes] = useState(null)
   console.log('notes', notes)
   useEffect(() => {
     console.log('notes:', notes)
@@ -22,6 +24,14 @@ export function NoteIndex() {
       setIsLoadingNotes(false)
     })
   }, [])
+
+
+
+  useEffect(() => {
+    noteService.query(filterBy)
+      .then(note => setNotes(note))
+      .catch(err => console.log('err:', err))
+  }, [filterBy])
 
 
   //removing note button, passing it forward to the child in the return
@@ -70,6 +80,10 @@ export function NoteIndex() {
     setNoteToAdd(updatedNoteToAdd)
   }
 
+  function onSetFilterBy(filterBy) {
+    setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
+  }
+
   function onChangeBGC(note, newBgc) {
     console.log('note in onChangeBGC:', note)
     noteService.changeNoteBGC(note, newBgc)
@@ -101,6 +115,10 @@ export function NoteIndex() {
       .catch(err => console.log('err:', err))
   }
 
+  function onHandlePin(note) {
+
+  }
+
   function onAddVideoUrl(url) {
     console.log('hi:', hi)
   }
@@ -113,6 +131,9 @@ export function NoteIndex() {
 
   return (
     <div className="search">
+      <div className="note-filter">
+        <NoteFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+      </div>
       <section className="note-add">
         <NoteEdit onAddNote={onAddNote} handleChange={handleChange} />
       </section>

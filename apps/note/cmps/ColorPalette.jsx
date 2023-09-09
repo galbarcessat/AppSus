@@ -1,11 +1,15 @@
 const { useRef } = React
 
 
-export function ColorPalette({ onChangeBGC, handleButtonClick, note }) {
-
+export function ColorPalette({ onChangeBGC, handleButtonClick, note, position }) {
+    const styles = {
+        position: 'absolute',
+        top: position.y + 'px',
+        left: position.x + 'px',
+    };
 
     return (
-        <div className="color-palette" >
+        <div className="color-palette" style={styles}>
             <div onClick={() => {
                 onChangeBGC(note, '#d3bfdb')
                 handleButtonClick()

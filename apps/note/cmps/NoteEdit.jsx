@@ -14,6 +14,8 @@ export function NoteEdit({ onAddNote, handleChange, noteId = null }) {
         // console.log('no noteid found')
     }, [])
 
+
+
     function loadNote(noteId) {
         // console.log('noteId:', noteId)
         noteService.get(noteId)
@@ -57,6 +59,13 @@ export function NoteEdit({ onAddNote, handleChange, noteId = null }) {
                     onAddNote(inputVal)
                     setInputVal('')
                 }}><span> add </span>
+
+                </button>
+
+                <button className="material-symbols-outlined logo" onClick={() => {
+                    onAddNote(inputVal)
+                    setInputVal('')
+                }}><span> list </span>
 
                 </button>
                 <button className="material-symbols-outlined logo" onClick={() => {

@@ -86,13 +86,24 @@ export const noteService = {
     save,
     get,
     getEmptyNote,
-    changeNoteBGC
+    changeNoteBGC,
+    getDefaultFilter
 }
 
-function query() {
-    return storageService.query(STORAGE_KEY).then(notes => {
-        return notes
-    })
+function query(filterBy = {}) {
+    return storageService.query(STORAGE_KEY)
+        .then(notes => {
+            if (filterBy.txt) {
+                const regExp = new RegExp(filterBy.txt, 'i')
+                notes = notes.filter(note => regExp.test(note.info.txt))
+            }
+            return notes
+        })
+}
+
+function getDefaultFilter() {
+    console.log('hi')
+    return { txt: '' }
 }
 
 
