@@ -103,11 +103,8 @@ export function NoteIndex() {
 
   function onAddNote(noteType, noteValue) {
     if (!noteValue) return
-    if (note.id) {
-      const noteId = utilService.makeId()
-    }
 
-    const note = noteService.getEmptyNote(noteId)
+    const note = noteService.getEmptyNote()
 
     note.type = noteType;
     note.info = noteService.getNoteInfoDataByNoteType(noteType, noteValue);
@@ -138,7 +135,7 @@ export function NoteIndex() {
         <CreateNoteInput onAddNote={onAddNote} handleChange={handleChange} />
       </section>
 
-      <NoteList onAddNote={onAddNote} setNotes={setNotes} notes={notes} onBlurNote={onBlurNote} onChangeBGC={onChangeBGC} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
+      <NoteList setNotes={setNotes} notes={notes} onBlurNote={onBlurNote} onChangeBGC={onChangeBGC} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
     </div>
   )
 }

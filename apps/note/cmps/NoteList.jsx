@@ -14,14 +14,13 @@ export function NoteList({ notes: initialNotes, setNotes, onBlurNote, onChangeBG
       setActiveNotePalette(null);
     } else {
       const noteWidth = event.currentTarget.offsetWidth;
-      const paletteWidth = 390; // Assuming palette is 200px wide, adjust this based on your CSS
+      const paletteWidth = 390;
       const noteHeight = event.currentTarget.offsetHeight;
-      // const demoX = event.clientX
-      // console.log('demoX:', demoX)
+
       const x = event.clientX - (paletteWidth - noteWidth) / 2;
-      console.log('x:', x)
+      // console.log('x:', x)
       const y = event.clientY + noteHeight;
-      console.log('y:', y)
+      // console.log('y:', y)
       setActiveNotePalette({ note, x, y });
     }
   }
