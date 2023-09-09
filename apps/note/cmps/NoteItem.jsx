@@ -16,10 +16,10 @@ export function NoteItem({ note, onRemoveNote, onEditNote, onBlurNote, onChangeB
     //     setIsExpanded(!isExpanded)
     // }
 
-
     return (
         <div style={{ backgroundColor: note.style.backgroundColor }} className='note clean-list' key={note.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
             <NotePreview note={note} onBlurNote={onBlurNote} onEditNote={onEditNote} />
+
 
             <div className='note-footer'>
                 <button className="logo" onClick={() => onRemoveNote(note.id)}>
