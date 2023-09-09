@@ -11,10 +11,9 @@
 /* @import './basics/layout.css'; */
 
 /* Views */
-@import "views/home.css";
-@import "apps/note/views/NoteIndex.css";
-
-@import "apps/mail/views/EmailIndex.css";
+@import "./views/Home.css";
+@import "./apps/note/views/NoteIndex.css";
+@import "./apps/mail/views/EmailIndex.css";
 
 /* Cmps */
 
