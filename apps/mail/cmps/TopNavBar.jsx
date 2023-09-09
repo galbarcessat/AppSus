@@ -19,7 +19,7 @@ export function TopNavBar({ handleChange, toggleSideMenu }) {
 
             </div>
 
-            <img className="user-img" src="../assets/img/galImg.png" alt="" />
+            <img className="user-img" src="../assets/img/galTeamImg.png" alt="" />
         </section>
     )
 }

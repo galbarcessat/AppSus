@@ -33,7 +33,8 @@ function _createEmails() {
             sentAt: 1551133930594,
             removedAt: null,
             from: 'momo@momo.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            labels: []
         }, {
             id: 'e102',
             subject: 'Miss you!',
@@ -43,7 +44,8 @@ function _createEmails() {
             sentAt: 1521133930594,
             removedAt: null,
             from: 'galbarcessat@gmail.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            labels: []
         }, {
             id: 'e103',
             subject: 'Miss you!',
@@ -53,7 +55,8 @@ function _createEmails() {
             sentAt: 1351133932594,
             removedAt: null,
             from: 'omerVered@gmail.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            labels: []
         },
         {
             id: 'e104',
@@ -64,7 +67,8 @@ function _createEmails() {
             sentAt: 1531133933594,
             removedAt: null,
             from: 'test@gal.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            labels: []
         },
         {
             id: 'e105',
@@ -75,7 +79,8 @@ function _createEmails() {
             sentAt: 1251122930594,
             removedAt: null,
             from: 'dog@test.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            labels: []
         },
         {
             id: 'e106',
@@ -86,7 +91,8 @@ function _createEmails() {
             sentAt: 1651122933594,
             removedAt: null,
             from: 'user@appsus.com',
-            to: 'Coding@hey.com'
+            to: 'Coding@hey.com',
+            labels: []
         },
         {
             id: 'e107',
@@ -97,7 +103,8 @@ function _createEmails() {
             sentAt: 1622323930594,
             removedAt: null,
             from: 'user@appsus.com',
-            to: 'eyalB@hello.com'
+            to: 'eyalB@hello.com',
+            labels: []
         }, {
             id: 'e108',
             subject: 'You got rich!',
@@ -107,7 +114,8 @@ function _createEmails() {
             sentAt: 1422322230294,
             removedAt: null,
             from: 'money@appsus.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            labels: []
         }, {
             id: 'e109',
             subject: 'React applications',
@@ -117,8 +125,9 @@ function _createEmails() {
             sentAt: 1622322930222,
             removedAt: null,
             from: 'reactWeb@appsus.com',
-            to: 'user@appsus.com'
-        },{
+            to: 'user@appsus.com',
+            labels: []
+        }, {
             id: 'e110',
             subject: 'LongTxt',
             body: 'Hey testing longTxt lets see if it will work.still testing needs to get many words! more words and more words',
@@ -127,7 +136,8 @@ function _createEmails() {
             sentAt: 1622444430222,
             removedAt: null,
             from: 'LongTxt@walla.com',
-            to: 'user@appsus.com'
+            to: 'user@appsus.com',
+            labels: []
         },]
 
         utilService.saveToStorage(STORAGE_KEY, emails)
@@ -239,6 +249,7 @@ function getEmptyEmail() {
         sentAt: '',
         removedAt: null,
         from: 'user@appsus.com',
-        to: ''
+        to: '',
+        labels: []
     }
 }
