@@ -148,34 +148,30 @@ function _createEmails() {
 
 function query(filterBy, sortBy) {
     return storageService.query(STORAGE_KEY).then((emails) => {
-        console.log('filterBy:', filterBy)
-        console.log('sortBy:', sortBy)
-        console.log('emails:', emails)
-
+       
         if (filterBy) {
 
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 emails = emails.filter((email) => (regex.test(email.subject) && !email.removedAt))
-                console.log('books', emails)
             } if (filterBy.All) {
-                console.log('FILTERING BY ALL')
+                // console.log('FILTERING BY ALL')
                 // emails = emails
                 emails = emails.filter((email) => !email.removedAt)
             }
             else if (filterBy.Deleted) {
-                console.log('FILTERING BY DELETE')
+                // console.log('FILTERING BY DELETE')
                 emails = emails.filter((email) => email.removedAt !== null)
             }
             else if (filterBy.Sent) {
-                console.log('FILTERING BY SENT')
+                // console.log('FILTERING BY SENT')
                 emails = emails.filter((email) => (email.from === loggedinUser.email && !email.removedAt))
             }
             else if (filterBy.Starred) {
-                console.log('FILTERING BY STARRED')
+                // console.log('FILTERING BY STARRED')
                 emails = emails.filter((email) => email.isStarred && !email.removedAt)
             } else if (filterBy.Inbox) {
-                console.log('FILTERING BY INBOX')
+                // console.log('FILTERING BY INBOX')
                 emails = emails.filter(email => (email.from !== loggedinUser.email && !email.removedAt))
             }
         }

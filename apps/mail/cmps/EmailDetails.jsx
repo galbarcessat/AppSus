@@ -33,25 +33,40 @@ export function EmailDetails({ onDeleteEmail, onReadMail, countRead }) {
     }
     function toggleLablesModal() {
         setLablesOn((prevLables) => !prevLables)
-        console.log('labelsOn:', labelsOn)
     }
 
     function onAddLabel(category) {
-        console.log('category:', category)
-        // console.log('email:', email)
         if (email.labels.includes(category)) return
         email.labels.push(category)
-        // setEmail(email)
-        console.log('email:', email)
-        EmailService.save(email).then(newEmail => setEmail(newEmail))
+        console.log('adding:', category)
+        saveUpdatedEmail()
     }
+
+    function onDeleteLabel(label) {
+        let labelIdx = email.labels.findIndex(l => l === label)
+        if (labelIdx === -1) return
+        email.labels.splice(labelIdx, 1)
+        saveUpdatedEmail()
+
+    }
+
+    function saveUpdatedEmail(){
+        EmailService.save(email)
+        .then(newEmail => {
+            // let test = [...newEmail]
+            const updatedEmail = { ...newEmail };
+            console.log('updatedEmail:', updatedEmail)
+            setEmail(updatedEmail)
+        })
+        .catch(err => console.log('err:', err))
+    }
+
     function getLabelColor(category) {
-        console.log('category:', category)
         if (!category) return
         return `label-${category}`
     }
 
-    console.log('email:', email)
+    // console.log('email:', email)
     if (!email) return <div>Loading...</div>
     return (
         <section className="email-details-container">
@@ -78,8 +93,9 @@ export function EmailDetails({ onDeleteEmail, onReadMail, countRead }) {
             {/* FIX THAT WHEN I ADD A LABEL IT RE RENDERS THE PAGE SO WE CAN SEE THE ADDED LABEL
             ADD X NEAR EACH LABEL SO WE CAN DELETE IT */}
             <div className="email-labels">
-                {email.labels.map(label => <div key={label} className={'label-tag '+ getLabelColor(label)} >{label}</div>)}
+                {email.labels.map(label => <div key={label} className={'label-tag ' + getLabelColor(label)} >{label}<i onClick={() => onDeleteLabel(label)} className="fa-regular fa-x delete-label-icon"></i></div>)}
             </div>
+
 
 
 
