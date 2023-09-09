@@ -163,10 +163,10 @@
      cursor: pointer;
  }
 
- .gal-img {
+ .team-member-img {
      height: 12em;
      border-radius: 12px;
-     width: 20em;
+     width: 320px;
  }
 
  footer {

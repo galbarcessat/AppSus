@@ -57,7 +57,7 @@ export function Home() {
 
             <div className="card-team">
 
-                <img className="gal-img" src="../assets/img/galTeamImg.png" alt="" />
+                <img className="team-member-img" src="../assets/img/galTeamImg.png" alt="" />
                 <div className="card-team-text">
                     <h4>Gal Ben Natan</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -79,7 +79,7 @@ export function Home() {
 
             <div className="card-team last-team-card">
 
-                <img className="gal-img" src="../assets/img/omerTeamImg.png" alt="" />
+                <img className="team-member-img" src="../assets/img/omerTeamImg.png" alt="" />
                 <div className="card-team-text">
                     <h4>Omer Vered</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.

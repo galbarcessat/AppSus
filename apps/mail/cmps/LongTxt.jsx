@@ -1,3 +1,4 @@
+
 export function LongTxt({ txt, length = 100 }) {
 
   function getTxtToShow() {
@@ -13,3 +14,5 @@ export function LongTxt({ txt, length = 100 }) {
     </div>
   )
 }
+
+

@@ -1,0 +1,16 @@
+@media (max-width: 1050px) {
+    .home-horse-img{
+        width: 100px;
+    }
+    .cards-apps-container {
+        flex-direction: column;
+    }
+    .card-team-text p{
+        font-size: 1rem;
+    }
+    /* .links-container i {
+        font-size: 1rem;
+        cursor: pointer;
+    } */
+
+}

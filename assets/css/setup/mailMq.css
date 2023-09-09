@@ -1,0 +1,132 @@
+/* EMAIL MEDIA QUERIES */
+
+@media (max-width: 1350px) {
+    .email-app-container {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        grid-template-rows: 64px 50px 1fr;
+
+    }
+
+    .side-txt {
+        display: none;
+    }
+
+    .btn-compose {
+        padding: 1.2em 1em;
+
+    }
+}
+
+@media (max-width: 1350px) {
+
+    .email-row {
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .email-from-content {
+        flex-direction: row-reverse;
+        width: 100%;
+    }
+
+    .email-side-icons-container {
+        margin-left: auto;
+    }
+
+    .email-body {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .search-input {
+        width: 30em;
+    }
+
+    .input-container {
+        margin-left: 1.5rem;
+    }
+
+    .email-row-date {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 850px) {
+    .compose-modal-container {
+        /* width: ; */
+        /* height: ; */
+    }
+}
+
+@media (max-width: 730px) {
+    .email-app-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 64px 50px 1fr 72px;
+    }
+
+    .sort-emails-container {
+        grid-row: 2/3;
+        grid-column: 1;
+    }
+
+    .emails-display-container {
+        grid-row: 3/4;
+        grid-column: 1;
+    }
+
+    .side-navbar {
+        grid-row: 4/5;
+        grid-column: 1;
+        height: 60px;
+    }
+
+    .side-navbar-inner-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+    .btn-compose{
+        margin-bottom: 0;
+    }
+
+    .side-bar-icons {
+        flex-direction: row;
+    }
+
+    /* .email-app-container{
+        grid-template-columns: 50px 1fr;
+        grid-template-rows: 64px 50px 1fr;
+    }
+    .btn-compose {
+        padding: 0.9em 0.7em;
+
+    } */
+    .search-input {
+        width: 24em;
+    }
+
+    .gmail-txt {
+        display: none;
+    }
+
+    .user-img {
+        width: 35px;
+        height: 35px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .search-input {
+        width: 18em;
+    }
+}
+
+@media (max-width: 520px) {
+    .sort-emails-container {
+        gap: 0.5em;
+    }
+}

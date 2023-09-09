@@ -32,12 +32,13 @@ export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
             <div className="email-body">
                 <span className={dynClassIsRead}>
                     {email.subject}
+                    <span className="makaf">-</span>
                 </span>
-                <span className="makaf">-</span>
-                <span className="email-body-txt"><LongTxt txt={email.body} length={100} /></span>
+            
+                <span className="email-body-txt"><LongTxt txt={email.body} length={80} /></span>
             </div>
 
-            <span className={dynClassIsRead}>
+            <span className={"email-row-date " + dynClassIsRead}>
                 {getFormatedDate(email.sentAt)}
             </span>
 
