@@ -8,7 +8,7 @@ export function NotePreview({ note, onBlurNote, onEditNote }) {
 
     function renderNotePreview() {
         // TODO render Note type component by node type
-        debugger
+
         switch (type) {
             case "NoteTxt": {
                 return (
