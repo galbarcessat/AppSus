@@ -16,7 +16,6 @@ export function TopNavBar({ handleChange, toggleSideMenu }) {
                     <input className="search-input" type="text" name='txt' id='txt' placeholder="Search mail" onChange={handleChange} />
                     <i className="fas fa-search search-icon"></i>
                 </div>
-
             </div>
 
             <img className="user-img" src="assets/img/galTeamImg.png" alt="" />
