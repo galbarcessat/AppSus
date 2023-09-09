@@ -25,8 +25,7 @@ export function NotePreview({ note, onBlurNote, onEditNote }) {
             case "NoteVideo": {
                 return (
 
-                    // <video src={info.url} controls width="240" height="240" onError={(e) => console.error('Video error:', e)}>
-                    // </video>
+
                     <iframe allow='fullscreen' className="note-video" src="https://www.youtube.com/embed/uXWycyeTeCs" width={1000} height={500} title=''></iframe>
 
                 )

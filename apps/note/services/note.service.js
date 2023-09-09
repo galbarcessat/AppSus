@@ -42,11 +42,11 @@ const demoNotes = [
         }
     },
     {
-        id: 'n102',
+        id: 'n122',
         type: 'NoteVideo',
         isPinned: false,
         info: {
-            url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+            url: "https://www.youtube.com/embed/uXWycyeTeCs",
         },
         style: {
             backgroundColor: '#00d'
@@ -172,9 +172,9 @@ function remove(noteId) {
     return storageService.remove(STORAGE_KEY, noteId)
 }
 
-function getEmptyNote(id = '') {
+function getEmptyNote() {
     return {
-        id,
+        id: '',
         createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,
