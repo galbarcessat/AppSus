@@ -3,18 +3,12 @@ import { ColorPalette } from './ColorPalette.jsx'
 const { useState, useEffect, useRef } = React
 
 
-export function NoteItem({ note, onRemoveNote, onEditNote, onBlurNote, onChangeBGC, handlePaletteButtonClick }) {
+export function NoteItem({ note, onRemoveNote, onEditNote, onBlurNote, onChangeBGC, handlePaletteButtonClick, onAddNote }) {
     const [isHover, setIsHover] = useState(false)
     const [isExpanded, setIsExpanded] = useState(false)
 
 
     const colorInputRef = useRef(null);
-    // const [notes, setNotes] = useState(initialNotes)  // Create a local state for notes
-
-
-    // function handleButtonClick() {
-    //     setIsExpanded(!isExpanded)
-    // }
 
     return (
         <div style={{ backgroundColor: note.style.backgroundColor }} className='note clean-list' key={note.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
@@ -28,7 +22,6 @@ export function NoteItem({ note, onRemoveNote, onEditNote, onBlurNote, onChangeB
                     </span>
                 </button>
 
-                {/* <button className="logo" onClick={() => onEditNote(note)}>Edit</button> */}
 
                 <button className="logo">
                     <span className="material-symbols-outlined ">
@@ -41,13 +34,18 @@ export function NoteItem({ note, onRemoveNote, onEditNote, onBlurNote, onChangeB
                         palette
                     </span>
                 </button>
+
+                <button className="logo" onClick={() => onAddNote(note.type, note.info)}>
+                    <span className="material-symbols-outlined">
+                        content_copy
+                    </span>
+                </button>
             </div>
-            {/* {isExpanded && <ColorPalette handleButtonClick={handleButtonClick} onChangeBGC={onChangeBGC} note={note} />} */}
         </div>
 
     )
 }
 
-// {isExpanded && <ColorPalette handleButtonClick = {handleButtonClick} onChangeBGC={onChangeBGC} note={note} /> }
+
 
 

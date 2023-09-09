@@ -3,64 +3,101 @@ import { storageService } from '../../../services/async-storage.service.js'
 // import { storageService } from '../../../services/storage.service.js'
 
 
+
 const demoNotes = [
+    {
+        id: 'n101',
+        createdAt: Date.now(),
+        type: 'NoteTxt',
+        isPinned: false,
+        style: {
+            backgroundColor: _makeRandBackgroundColor()
+        },
+        info: {
+            txt: 'Fullstack Me Baby!'
+        }
+    },
+    {
+        id: 'n105',
+        createdAt: Date.now(),
+        type: 'NoteTxt',
+        isPinned: false,
+        style: {
+            backgroundColor: _makeRandBackgroundColor()
+        },
+        info: {
+            txt: 'Fullstack Me Baby!'
+        }
+    },
+    {
+        id: 'n104',
+        createdAt: Date.now(),
+        type: 'NoteTxt',
+        isPinned: false,
+        style: {
+            backgroundColor: _makeRandBackgroundColor()
+        },
+        info: {
+            txt: 'Fullstack Me Baby!'
+        }
+    },
+    {
+        id: 'n102',
+        type: 'NoteVideo',
+        isPinned: false,
+        info: {
+            url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        },
+        style: {
+            backgroundColor: '#00d'
+        }
+    },
+    {
+        id: 'n102',
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+            url: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRWWl0PO7qFWCsi9Wvf57JmYbfLEWqWWx1mBqinse1nEvEnyomeU-Uuq_3snC1fh_nr50svczyRaZbOvBk",
+            title: 'Bobi and Me'
+        },
+        style: {
+            backgroundColor: _makeRandBackgroundColor()
+        }
+    },
+    {
+        id: 'n111',
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+            url: "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*",
+            title: 'Bobi and Me'
+        },
+        style: {
+            backgroundColor: _makeRandBackgroundColor()
+        }
+    },
+    {
+        id: 'n109',
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+            url: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRWWl0PO7qFWCsi9Wvf57JmYbfLEWqWWx1mBqinse1nEvEnyomeU-Uuq_3snC1fh_nr50svczyRaZbOvBk",
+            title: 'Bobi and Me'
+        },
+        style: {
+            backgroundColor: _makeRandBackgroundColor()
+        }
+    },
     // {
-    //     id: 'n101',
-    //     createdAt: Date.now(),
-    //     type: 'NoteTxt',
-    //     isPinned: false,
-    //     style: {
-    //         backgroundColor: _makeRandBackgroundColor()
-    //     },
-    //     info: {
-    //         txt: 'Fullstack Me Baby!'
-    //     }
-    // },
-    // {
-    //     id: 'n105',
-    //     createdAt: Date.now(),
-    //     type: 'NoteTxt',
-    //     isPinned: false,
-    //     style: {
-    //         backgroundColor: _makeRandBackgroundColor()
-    //     },
-    //     info: {
-    //         txt: 'Fullstack Me Baby!'
-    //     }
-    // },
-    // {
-    //     id: 'n104',
-    //     createdAt: Date.now(),
-    //     type: 'NoteTxt',
-    //     isPinned: false,
-    //     style: {
-    //         backgroundColor: _makeRandBackgroundColor()
-    //     },
-    //     info: {
-    //         txt: 'Fullstack Me Baby!'
-    //     }
-    // },
-    // {
-    //     id: 'n102',
-    //     type: 'NoteVideo',
-    //     isPinned: false,
-    //     info: {
-    //         url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    //     },
-    //     style: {
-    //         backgroundColor: '#00d'
-    //     }
-    // },
-    // {
-    //     id: 'n102',
+    //     id: 'n110',
     //     type: 'NoteImg',
     //     isPinned: false,
     //     info: {
-    //         url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    //         url: "https://www.youtube.com/watch?v=ymg9_4YHKVQ",
     //         title: 'Bobi and Me'
     //     },
     //     style: {
-    //         backgroundColor: '#00d'
+    //         backgroundColor: _makeRandBackgroundColor()
     //     }
     // },
     // {
@@ -135,9 +172,9 @@ function remove(noteId) {
     return storageService.remove(STORAGE_KEY, noteId)
 }
 
-function getEmptyNote() {
+function getEmptyNote(id = '') {
     return {
-        id: '',
+        id,
         createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,

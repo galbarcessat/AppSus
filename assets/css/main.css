@@ -11,16 +11,16 @@
 /* @import './basics/layout.css'; */
 
 /* Views */
-@import "./views/home.css";
-@import "./apps/note/views/NoteIndex.css";
+@import "views/home.css";
+@import "apps/note/views/NoteIndex.css";
 
-@import "./apps/mail/views/EmailIndex.css";
+@import "apps/mail/views/EmailIndex.css";
 
 /* Cmps */
 
 @import "./cmps/UserMsg.css";
 @import "./cmps/AppHeader.css";
-@import "../css/cmps/UserMsg.css";
+@import "./css/cmps/UserMsg.css";
 
 /* Keep Cmps */
 @import "../../assets/css/apps/note/cmps/NoteList.css";
@@ -28,6 +28,7 @@
 @import "../../assets/css/apps/note/cmps/NotePreview.css";
 @import "../../assets/css/apps/note/cmps/NoteText.css";
 @import "../../assets/css/apps/note/cmps/NoteBtns.css";
+@import "../../assets/css/apps/note/cmps/NoteTypeButton.css";
 @import "../../assets/css/apps/note/cmps/ColorPicker.css";
 /* @import "../../assets/css/apps/note/cmps/Note.css"; */
 @import "../../assets/css/apps/note/views/NoteIndex.css";
@@ -44,3 +45,6 @@
 @import "./setup/homeMq.css";
 @import "./setup/mailMq.css";
 
+@import "../apps/mail/cmps/EmailDetails.css";
+@import "../apps/mail/cmps/EmailCompose.css";
+@import "../apps/mail/cmps/EmailLables.css";

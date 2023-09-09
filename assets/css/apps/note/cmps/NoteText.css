@@ -27,27 +27,7 @@
   outline: none;
 }
 
-/* should be in a sparated file for noteTypeButton component */
-.note-type-button {
-  flex-shrink: 0;
-  cursor: pointer;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 200ms ease;
-
-  &:hover {
-    background-color: gray;
-  }
-}
-
-.note-type-selected {
-  color: black;
-}
-
-.note-type-button-icon {
-  font-size: 20px;
+.edit-note-text {
+  opacity: 0.2;
+  font-size: 0.8rem;
 }

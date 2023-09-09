@@ -5,8 +5,8 @@ import { NoteItem } from './NoteItem.jsx'
 const { Link } = ReactRouterDOM
 const { useState } = React
 
-export function NoteList({ notes: initialNotes, setNotes, onBlurNote, onChangeBGC, onRemoveNote, onEditNote }) {
-  //testing
+export function NoteList({ notes: initialNotes, setNotes, onBlurNote, onChangeBGC, onRemoveNote, onEditNote, onAddNote }) {
+
   const [activeNotePalette, setActiveNotePalette] = useState(null);
 
   function handlePaletteButtonClick(note, event) {
@@ -25,11 +25,13 @@ export function NoteList({ notes: initialNotes, setNotes, onBlurNote, onChangeBG
       setActiveNotePalette({ note, x, y });
     }
   }
-  //testing
 
-  // console.log('initialNotes:', initialNotes)
+  function onCopyNote(note) {
+    console.log('note:', note)
+  }
+
   const renderNoteList = () => {
-    return initialNotes.map(note => <NoteItem onChangeBGC={onChangeBGC} onRemoveNote={onRemoveNote} setNotes={setNotes} onEditNote={onEditNote} onBlurNote={onBlurNote} key={note.id} note={note} handlePaletteButtonClick={handlePaletteButtonClick} />)
+    return initialNotes.map(note => <NoteItem onChangeBGC={onChangeBGC} onAddNote={onAddNote} onRemoveNote={onRemoveNote} setNotes={setNotes} onEditNote={onEditNote} onBlurNote={onBlurNote} key={note.id} note={note} handlePaletteButtonClick={handlePaletteButtonClick} />)
   }
 
 
