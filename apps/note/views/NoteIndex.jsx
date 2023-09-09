@@ -3,6 +3,8 @@ import { NoteList } from "../cmps/NoteList.jsx"
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 import CreateNoteInput from '../cmps/CreateNoteInput.jsx'
 import { NoteFilter } from "../cmps/NoteFilter.jsx"
+import { storageService } from "../../../services/async-storage.service.js"
+import { utilService } from "../../../services/util.service.js"
 
 const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
@@ -101,8 +103,11 @@ export function NoteIndex() {
 
   function onAddNote(noteType, noteValue) {
     if (!noteValue) return
+    if (note.id) {
+      const noteId = utilService.makeId()
+    }
 
-    const note = noteService.getEmptyNote()
+    const note = noteService.getEmptyNote(noteId)
 
     note.type = noteType;
     note.info = noteService.getNoteInfoDataByNoteType(noteType, noteValue);
@@ -133,7 +138,7 @@ export function NoteIndex() {
         <CreateNoteInput onAddNote={onAddNote} handleChange={handleChange} />
       </section>
 
-      <NoteList setNotes={setNotes} notes={notes} onBlurNote={onBlurNote} onChangeBGC={onChangeBGC} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
+      <NoteList onAddNote={onAddNote} setNotes={setNotes} notes={notes} onBlurNote={onBlurNote} onChangeBGC={onChangeBGC} onRemoveNote={onRemoveNote} onEditNote={onEditNote} />
     </div>
   )
 }

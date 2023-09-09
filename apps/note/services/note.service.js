@@ -172,9 +172,9 @@ function remove(noteId) {
     return storageService.remove(STORAGE_KEY, noteId)
 }
 
-function getEmptyNote() {
+function getEmptyNote(id = '') {
     return {
-        id: '',
+        id,
         createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,

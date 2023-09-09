@@ -3,7 +3,7 @@ import { ColorPalette } from './ColorPalette.jsx'
 const { useState, useEffect, useRef } = React
 
 
-export function NoteItem({ note, onRemoveNote, onEditNote, onBlurNote, onChangeBGC, handlePaletteButtonClick }) {
+export function NoteItem({ note, onRemoveNote, onEditNote, onBlurNote, onChangeBGC, handlePaletteButtonClick, onAddNote }) {
     const [isHover, setIsHover] = useState(false)
     const [isExpanded, setIsExpanded] = useState(false)
 
@@ -22,6 +22,7 @@ export function NoteItem({ note, onRemoveNote, onEditNote, onBlurNote, onChangeB
                     </span>
                 </button>
 
+
                 <button className="logo">
                     <span className="material-symbols-outlined ">
                         push_pin
@@ -31,6 +32,12 @@ export function NoteItem({ note, onRemoveNote, onEditNote, onBlurNote, onChangeB
                 <button className="logo" onClick={(event) => handlePaletteButtonClick(note, event)}>
                     <span className="material-symbols-outlined">
                         palette
+                    </span>
+                </button>
+
+                <button className="logo" onClick={() => onAddNote(note.type, note.info)}>
+                    <span className="material-symbols-outlined">
+                        content_copy
                     </span>
                 </button>
             </div>
