@@ -1,16 +1,80 @@
 @media (max-width: 1050px) {
-    .home-horse-img{
-        width: 100px;
+    .home-horse-img {
+        width: 200px;
     }
+
     .cards-apps-container {
         flex-direction: column;
     }
-    .card-team-text p{
+
+    .card-team-text p {
         font-size: 1rem;
     }
-    /* .links-container i {
+
+}
+
+@media (max-width: 1050px) {
+    .home-horse-img {
+        width: 150px;
+    }
+
+    .home-big-logo {
+        font-size: 8rem;
+    }
+
+    .main-sentence {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .btn-get-started {
+        padding: 12px 20px
+    }
+
+    .home-horse-img {
+        width: 130px;
+    }
+
+    .home-big-logo {
+        font-size: 7rem;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .home-horse-img {
+        width: 110px;
+    }
+
+    .home-big-logo {
+        font-size: 6rem;
+    }
+
+    .main-sentence {
         font-size: 1rem;
-        cursor: pointer;
-    } */
+    }
+
+    .btn-get-started {
+        padding: 10px 18px
+    }
+
+    .team-member-img {
+        height: 10em;
+    }
+
+    .links-container i {
+        font-size: 1.5rem;
+    }
+
+    .card-team h4 {
+        font-size: 1.1rem;
+    }
+
+    .card-team {
+        width: 85%;
+    }
+
 
 }
