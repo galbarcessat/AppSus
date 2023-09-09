@@ -7,19 +7,32 @@ export function NoteEdit({ onAddNote, handleChange, noteId = null }) {
     const [isExpanded, setIsExpanded] = useState(false)
 
     useEffect(() => {
-        if (noteId) loadNote(noteId)
+        if (noteId) {
+            console.log('noteId:', noteId)
+            loadNote(noteId)
+        }
+        // console.log('no noteid found')
     }, [])
 
+
+
     function loadNote(noteId) {
+        // console.log('noteId:', noteId)
         noteService.get(noteId)
-            .then((note) => setInputVal(note.info.txt))
+            .then((note) => {
+                setInputVal(note.info.txt)
+            })
+    }
+
+    function onAddImage(inputVal) {
+        console.log('inputVal:', inputVal)
     }
 
     function onInputText({ target: { value } }) {
         setInputVal(value)
     }
 
-    function handleChange(prop) {
+    function handlePlaceHolderChange(prop) {
 
         switch (prop) {
             case 'imageUrl':
@@ -41,24 +54,32 @@ export function NoteEdit({ onAddNote, handleChange, noteId = null }) {
         <div className="add-note-container">
             <div className="text-input-container">
                 <input className="note-text" type="text" placeholder={placeHolderTxt} value={inputVal} onChange={(ev) => onInputText(ev)} />
+
                 <button className="material-symbols-outlined logo" onClick={() => {
                     onAddNote(inputVal)
                     setInputVal('')
-                }}><span>
-                        add
-                    </span></button>
-                <button className="material-symbols-outlined logo" onClick={() => handleChange('imageUrl')}>
-                    <span>
-                        add_photo_alternate
-                    </span>
+                }}><span> add </span>
+
+                </button>
+
+                <button className="material-symbols-outlined logo" onClick={() => {
+                    onAddNote(inputVal)
+                    setInputVal('')
+                }}><span> list </span>
+
                 </button>
                 <button className="material-symbols-outlined logo" onClick={() => {
-                    onAddVideo
-                    handleChange('videoUrl')
+                    handlePlaceHolderChange('imageUrl')
+                    setInputVal('')
                 }}>
-                    <span>
-                        smart_display
-                    </span>
+                    <span>add_photo_alternate</span>
+                </button>
+
+                <button className="material-symbols-outlined logo" onClick={() => {
+                    handlePlaceHolderChange('videoUrl')
+                    setInputVal('')
+                }}>
+                    <span>smart_display</span>
                 </button>
             </div>
         </div>

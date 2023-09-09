@@ -2,11 +2,15 @@
   border: none;
   font-size: 1rem;
   height: 100%;
-  padding: 10px;
+  padding: 20px;
   margin-left: 10px;
   width: 100%;
   margin-right: 10px;
   padding-left: 10px;
+}
+
+.note-text:focus {
+  outline: none;
 }
 
 .add-note-container {
@@ -27,12 +31,12 @@
   margin-inline-end: 5px;
 }
 
-.color-palette {
+/* .color-palette {
   display: flex;
-  /* width: auto; */
+  width: auto;
   height: 50px;
   background-color: white;
-}
+} */
 
 .color {
   width: 30px;

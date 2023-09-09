@@ -1,8 +1,14 @@
 /* #D3BFDB', '#D4E3ED', '#F39F76', '#FAAFA7', '#EFEFF1', '#F6E2DD', '#E2F5D3', '#D3BFDB */
 
-.color-container {
-  width: 300px;
-  height: 100px;
-  border-radius: 50px;
-  margin: 2px;
+.color-palette {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  width: auto;
+  /* height: 0px; */
+  border-radius: 30px;
+  padding: 0 5px;
+  /* margin: 2px; */
+  background-color: rgb(254, 254, 254);
+  border: 1px rgb(211, 211, 211) solid;
 }

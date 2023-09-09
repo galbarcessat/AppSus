@@ -40,12 +40,23 @@ const demoNotes = [
             txt: 'Fullstack Me Baby!'
         }
     },
+    {
+        id: 'n102',
+        type: 'NoteVideo',
+        isPinned: false,
+        info: {
+            url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        },
+        style: {
+            backgroundColor: '#00d'
+        }
+    },
     // {
     //     id: 'n102',
     //     type: 'NoteImg',
     //     isPinned: false,
     //     info: {
-    //         url: 'http://some-img/me',
+    //         url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
     //         title: 'Bobi and Me'
     //     },
     //     style: {
@@ -75,13 +86,24 @@ export const noteService = {
     save,
     get,
     getEmptyNote,
-    changeNoteBGC
+    changeNoteBGC,
+    getDefaultFilter
 }
 
-function query() {
-    return storageService.query(STORAGE_KEY).then(notes => {
-        return notes
-    })
+function query(filterBy = {}) {
+    return storageService.query(STORAGE_KEY)
+        .then(notes => {
+            if (filterBy.txt) {
+                const regExp = new RegExp(filterBy.txt, 'i')
+                notes = notes.filter(note => regExp.test(note.info.txt))
+            }
+            return notes
+        })
+}
+
+function getDefaultFilter() {
+    console.log('hi')
+    return { txt: '' }
 }
 
 

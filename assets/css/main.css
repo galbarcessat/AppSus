@@ -23,9 +23,11 @@
 
 /* Keep Cmps */
 @import "../../assets/css/apps/note/cmps/NoteList.css";
+@import "../../assets/css/apps/note/cmps/NoteFilter.css";
 @import "../../assets/css/apps/note/cmps/NotePreview.css";
 @import "../../assets/css/apps/note/cmps/NoteText.css";
 @import "../../assets/css/apps/note/cmps/NoteBtns.css";
+@import "../../assets/css/apps/note/cmps/ColorPicker.css";
 /* @import "../../assets/css/apps/note/cmps/Note.css"; */
 @import "../../assets/css/apps/note/views/NoteIndex.css";
 
