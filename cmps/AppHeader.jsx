@@ -16,7 +16,7 @@ export function AppHeader() {
     <section>
       <header className="app-header">
         <Link to="/">
-          <h3 className="app-header-title"><img className="horse-img" src="../assets/img/horseImg.png" alt="" />AppSus</h3>
+          <h3 className="app-header-title"><img className="horse-img" src="assets/img/horseImg.png" alt="" />AppSus</h3>
         </Link>
         <span onClick={() => toggleMenu()} className="main-menu-icon"><i className="fa-solid fa-bars"></i></span>
         {/* <UserMsg /> */}
