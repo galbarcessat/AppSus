@@ -55,8 +55,7 @@
 
 @media (max-width: 850px) {
     .compose-modal-container {
-        /* width: 450px;
-        height: 465px; */
+
         top: 0;
         right: 0;
         left: 0;
@@ -67,7 +66,8 @@
         max-height: none;
 
     }
-    .compose-modal-container form{
+
+    .compose-modal-container form {
         height: 100%;
     }
 
@@ -122,6 +122,14 @@
         margin-right: 40px;
     }
 
+    .top-navbar-left-content{
+        gap: 0;
+    }
+    .menu-icon {
+        font-size: 0;
+        margin: 0;
+    }
+
     .labels-container {
         bottom: 6em;
     }
@@ -152,7 +160,7 @@
 
 @media (max-width: 600px) {
     .search-input {
-        width: 18em;
+        width: 20em;
     }
 }
 

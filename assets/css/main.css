@@ -43,7 +43,3 @@
 /* MQ */
 @import "./setup/homeMq.css";
 @import "./setup/mailMq.css";
-
-@import "../apps/mail/cmps/EmailDetails.css";
-@import "../apps/mail/cmps/EmailCompose.css";
-@import "../apps/mail/cmps/EmailLables.css";
