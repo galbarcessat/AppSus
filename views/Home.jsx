@@ -61,7 +61,7 @@ export function Home() {
                 <div className="card-team-text">
                     <h4>Gal Ben Natan</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Dolorum perspiciatis iusto totam error aperiam itaque odio natus facilis a voluptatibus!</p>
+                        Dolorum perspiciatis iusto totam error aperiam!</p>
                 </div>
 
                 <div className="links-container">
@@ -83,7 +83,7 @@ export function Home() {
                 <div className="card-team-text">
                     <h4>Omer Vered</h4>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Dolorum perspiciatis iusto totam error aperiam itaque odio natus facilis a voluptatibus!</p>
+                        Dolorum perspiciatis iusto totam error aperiam!</p>
                 </div>
 
                 <div className="links-container">

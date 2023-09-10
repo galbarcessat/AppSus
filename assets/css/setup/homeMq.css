@@ -76,5 +76,36 @@
         width: 85%;
     }
 
+    .links-container {
+        flex-direction: column;
+    }
+}
 
+@media (max-width: 600px) {
+    .home-big-logo {
+        font-size: 5rem;
+    }
+
+    .home-horse-img {
+        width: 90px;
+    }
+
+    .main-sentence {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    .home-big-logo p {
+        font-size: 4rem;
+    }
+
+    .home-horse-img {
+        width: 90px;
+    }
+
+    .btn-get-started {
+        font-size: 12px;
+        padding: 8px 16px
+    }
 }
