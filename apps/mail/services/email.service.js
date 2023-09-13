@@ -37,8 +37,8 @@ function _createEmails() {
             labels: []
         }, {
             id: 'e102',
-            subject: 'Miss you!',
-            body: 'Would love to catch up sometimes',
+            subject: 'Happy to see you!',
+            body: 'I was so happy to see you yesterday at the club would like to meet.',
             isRead: false,
             isStarred: false,
             sentAt: 1521133930594,
@@ -48,8 +48,8 @@ function _createEmails() {
             labels: []
         }, {
             id: 'e103',
-            subject: 'Miss you!',
-            body: 'Would love to catch up sometimes',
+            subject: 'Gift!',
+            body: 'Hello, you have a secret gift waiting for you in this email',
             isRead: false,
             isStarred: false,
             sentAt: 1351133932594,
@@ -138,7 +138,22 @@ function _createEmails() {
             from: 'LongTxt@walla.com',
             to: 'user@appsus.com',
             labels: []
-        },]
+        },
+        {
+            id: 'e111',
+            subject: 'Dream job',
+            body: 'hey this is a mail from your dream job, you have passed the first phase.',
+            isRead: false,
+            isStarred: false,
+            sentAt: 1655544430222,
+            removedAt: null,
+            from: 'Dreamjob@walla.com',
+            to: 'user@appsus.com',
+            labels: []
+        },
+
+
+        ]
 
         utilService.saveToStorage(STORAGE_KEY, emails)
     }
@@ -148,7 +163,7 @@ function _createEmails() {
 
 function query(filterBy, sortBy) {
     return storageService.query(STORAGE_KEY).then((emails) => {
-       
+
         if (filterBy) {
 
             if (filterBy.txt) {

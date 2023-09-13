@@ -20,7 +20,8 @@ export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
         <div className={"email-row " + dynClassIsRead} onClick={() => { navigate(`Details/${email.id}`) }}>
             <div className="email-from-content">
                 <div className="email-side-icons-container">
-                    <span><i className="fa-regular fa-square"></i></span>
+                    <input onClick={(e) => e.stopPropagation()} className='checkbox-input' type="checkbox" />
+                    {/* <span><i className="fa-regular fa-square"></i></span>  */}
                     {/* <i class="fa-regular fa-square-check"></i> */}
                     <span onClick={(e) => {
                         e.stopPropagation()

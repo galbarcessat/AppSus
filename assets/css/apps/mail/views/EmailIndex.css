@@ -89,8 +89,10 @@
     width: 40em;
     font-family: openSans, sans-serif;
 }
+
 .search-input::placeholder {
-    font-size: 16px; /* Set the desired font size */
+    font-size: 16px;
+    /* Set the desired font size */
 }
 
 .search-input:focus {
@@ -283,9 +285,21 @@
 
 }
 
+.email-row-date {
+    padding-inline-end: 10px;
+}
+
 .fa-square,
 .fa-star {
     padding-inline-end: 12px;
+}
+
+.checkbox-input {
+    margin-inline-end: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    transform: scale(1.2)
 }
 
 .unstarred {
