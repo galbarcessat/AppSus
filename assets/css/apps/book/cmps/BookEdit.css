@@ -25,3 +25,8 @@
     align-items: center;
     font-size: 1.2em;
 }
+@media (max-width: 670px) {
+    .book-edit form {
+      flex-direction: column;
+    }
+  }

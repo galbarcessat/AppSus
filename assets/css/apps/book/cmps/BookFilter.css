@@ -4,11 +4,16 @@
   align-items: center;
   gap: 1rem;
 }
+
 .book-filter h2 {
   margin: 0.5em 0 0.5em;
 }
 
-
+@media (max-width: 670px) {
+  .book-filter form {
+    flex-direction: column;
+  }
+}
 
 .book-filter button {
   cursor: pointer;
@@ -16,7 +21,7 @@
   margin: 0.5em;
   border: 0;
   padding: 0.5em 0.8em;
-  border-radius: 4px;   
+  border-radius: 4px;
 }
 
 .book-filter button:hover {
@@ -24,6 +29,7 @@
   color: white;
   transition: .3s;
 }
+
 .book-filter input:focus {
   background-color: rgb(233, 206, 221);
   transition: background-color 1s;
