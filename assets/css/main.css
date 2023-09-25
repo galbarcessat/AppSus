@@ -32,13 +32,24 @@
 /* @import "../../assets/css/apps/note/cmps/Note.css"; */
 @import "../../assets/css/apps/note/views/NoteIndex.css";
 
-/* @import './apps/mail/cmps/MailList.css'; */
 
 /* Email Cmps */
-
 @import "./apps/mail/cmps/EmailDetails.css";
 @import "./apps/mail/cmps/EmailCompose.css";
 @import "./apps/mail/cmps/EmailLables.css";
+
+
+/* Books Cmps */
+@import "./apps/book/cmps/BookIndex.css";
+@import "./apps/book/cmps/BookList.css";
+@import "./apps/book/cmps/BookPreview.css";
+@import "./apps/book/cmps/BookFilter.css";
+@import "./apps/book/cmps/BookDetails.css";
+@import "./apps/book/cmps/BookReview.css";
+@import "./apps/book/cmps/GoogleBooksList.css";
+@import "./apps/book/cmps/BookEdit.css";
+@import "./apps/book/cmps/AddReview.css";
+
 
 /* MQ */
 @import "./setup/homeMq.css";

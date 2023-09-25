@@ -224,7 +224,10 @@
 }
 
 /* EMAIL ROW LAYOUT */
-
+.no-emails-txt{
+    padding: 2.5em;
+    font-size: 1.2rem;
+}
 .email-row {
     display: flex;
     gap: 10px;

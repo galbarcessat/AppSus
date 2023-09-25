@@ -1,0 +1,27 @@
+
+.book-edit button {
+    cursor: pointer;
+    background-color: rgb(233, 206, 221);
+    margin: 0.5em;
+    border: 0;
+    padding: 0.5em 0.8em;
+    border-radius: 4px;
+}
+
+.book-edit button:hover {
+    background-color: rgb(120, 99, 110);
+    color: white;
+    transition: .3s;
+}
+
+.book-edit input:focus {
+    background-color: rgb(233, 206, 221);
+    transition: background-color 1s;
+}
+.book-edit form{
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}

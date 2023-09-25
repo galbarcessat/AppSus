@@ -60,8 +60,7 @@ export function Home() {
                 <img className="team-member-img" src="assets/img/galTeamImg.png" alt="" />
                 <div className="card-team-text">
                     <h4>Gal Ben Natan</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Dolorum perspiciatis iusto totam error aperiam!</p>
+                    <p>"Full-stack developer, deeply passionate about web development. I'm dedicated to crafting seamless user experiences and bringing innovative ideas to life through code."</p>
                 </div>
 
                 <div className="links-container">
@@ -82,8 +81,7 @@ export function Home() {
                 <img className="team-member-img" src="assets/img/omerTeamImg.png" alt="" />
                 <div className="card-team-text">
                     <h4>Omer Vered</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Dolorum perspiciatis iusto totam error aperiam!</p>
+                    <p>"Full-stack developer with a strong passion for web development. My mission is to create flawless user experiences and transform creative concepts into reality through code."</p>
                 </div>
 
                 <div className="links-container">

@@ -35,7 +35,7 @@ export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
                     {email.subject}
                     <span className="makaf">-</span>
                 </span>
-            
+
                 <span className="email-body-txt"><LongTxt txt={email.body} length={80} /></span>
             </div>
 
@@ -44,7 +44,9 @@ export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
             </span>
 
             <div className={"email-icons-container " + dynClassIsRead}>
-                <i title="Save as note" className="fa-regular fa-paper-plane email-row-icon"></i>
+                <i onClick={(e) => {
+                    e.stopPropagation()
+                }} title="Save as note" className="fa-regular fa-paper-plane email-row-icon"></i>
                 <span onClick={(e) => {
                     e.stopPropagation()
                     onToggleElement(email, 'envelope')

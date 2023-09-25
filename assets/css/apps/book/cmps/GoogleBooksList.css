@@ -1,0 +1,43 @@
+.google-books-list li {
+    margin: 1em;
+}
+
+.google-books-list button {
+    cursor: pointer;
+    background-color: rgb(233, 206, 221);
+    margin: 0.5em;
+    border: 0;
+    padding: 0.5em 0.8em;
+    border-radius: 4px;
+}
+
+.google-books-list button:hover {
+    background-color: rgb(120, 99, 110);
+    color: white;
+    transition: .3s;
+}
+
+.google-books-list input:focus {
+    background-color: rgb(233, 206, 221);
+    transition: background-color 1s;
+}
+
+.search-google-book-txt {
+    font-size: 1.5em;
+    padding: 1em;
+}
+
+.add-book-inner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-book-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#search {
+    margin-top: 5px;
+}

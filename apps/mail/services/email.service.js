@@ -171,7 +171,6 @@ function query(filterBy, sortBy) {
                 emails = emails.filter((email) => (regex.test(email.subject) && !email.removedAt))
             } if (filterBy.All) {
                 // console.log('FILTERING BY ALL')
-                // emails = emails
                 emails = emails.filter((email) => !email.removedAt)
             }
             else if (filterBy.Deleted) {
