@@ -1,6 +1,7 @@
 // mail service
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
+import { noteService } from '../../note/services/note.service.js'
 
 const STORAGE_KEY = 'emailsDB'
 const loggedinUser = {
@@ -16,7 +17,8 @@ export const EmailService = {
     remove,
     save,
     getDefaultFilter,
-    getEmptyEmail
+    getEmptyEmail,
+    convertEmailToNote
 
 }
 
@@ -261,5 +263,20 @@ function getEmptyEmail() {
         from: 'user@appsus.com',
         to: '',
         labels: []
+    }
+}
+
+function convertEmailToNote(email) {
+    let { subject, body } = email
+    return {
+        createdAt: Date.now(),
+        type: 'NoteTxt',
+        isPinned: false,
+        style: {
+            backgroundColor: noteService._makeRandBackgroundColor()
+        },
+        info: {
+            txt: subject + "-" + body
+        }
     }
 }

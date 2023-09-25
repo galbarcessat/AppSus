@@ -230,7 +230,8 @@ export const noteService = {
     getEmptyNote,
     changeNoteBGC,
     getDefaultFilter,
-    getNoteInfoDataByNoteType
+    getNoteInfoDataByNoteType,
+    _makeRandBackgroundColor
 }
 
 

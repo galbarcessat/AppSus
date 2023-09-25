@@ -1,6 +1,8 @@
 const { useState, useEffect } = React
 const { Link, useNavigate } = ReactRouterDOM
 import { LongTxt } from '../cmps/LongTxt.jsx'
+import { EmailService } from '../services/email.service.js'
+import { noteService } from '../../note/services/note.service.js'
 
 export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
     const navigate = useNavigate()
@@ -8,6 +10,13 @@ export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
     function getFormatedDate(timestamp) {
         const date = new Date(timestamp)
         return date.toLocaleDateString()
+    }
+
+    function onConvertEmailToNote(email) {
+        let note = EmailService.convertEmailToNote(email)
+        noteService.save(note)
+        navigate('/note')
+        // console.log('note:', note)
     }
 
     let dynClassIsRead = email.isRead ? 'read' : 'unread'
@@ -46,6 +55,7 @@ export function EmailPreview({ email, onDeleteEmail, onToggleElement }) {
             <div className={"email-icons-container " + dynClassIsRead}>
                 <i onClick={(e) => {
                     e.stopPropagation()
+                    onConvertEmailToNote(email)
                 }} title="Save as note" className="fa-regular fa-paper-plane email-row-icon"></i>
                 <span onClick={(e) => {
                     e.stopPropagation()
